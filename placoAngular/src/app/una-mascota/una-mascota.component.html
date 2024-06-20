@@ -1,0 +1,30 @@
+<div class="containerMascota">
+    <h1 class="animate__animated animate__bounce">{{mascota.raza}}</h1>
+    <hr>
+    <div class="row animated fadeIn fast">
+        <div class="col md-4 text-center">
+            <img width="500px" src="{{mascota.imagen}}" alt="" class="img-fluid">
+            <br><br>
+            <a [routerLink]="['/adopta']" class="btn btn-outline-dark btn-block">Regresar</a>
+        </div>
+        <div class="col md-8">
+            <h3>{{mascota.nombre}}</h3>
+            <hr>
+            <p>
+                {{mascota.descripcion}}
+            </p>
+            <hr>
+            <p>
+                <b>Edad:</b> {{mascota.edad}}
+            </p>
+            <p>
+                <b>Color:</b> {{mascota.color}}
+            </p>
+            <p>
+                <b>Tiempo:</b> {{mascota.tiempo}}
+            </p>
+            <hr>
+            <app-formulario [nombreMascota]="mascota.nombre"></app-formulario>
+        </div>
+    </div>
+</div>

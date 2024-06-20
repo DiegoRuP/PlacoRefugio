@@ -1,0 +1,73 @@
+#texto{
+    text-align: center;
+    color: black;
+}
+
+.card img{
+    width: 80%;
+    height: 60%;
+    margin: auto;
+    border-radius: 20px !important;
+}
+
+.card-group{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+}
+
+.card {
+    padding: 20px;
+    background-color: #b99d81;
+    border-radius: 20px !important;  /* Borde redondeado para la tarjeta */
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: scale(1.04);
+}
+
+.informacion{
+    max-width: 90%;
+    background-color: #b99d81;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    text-align: left;
+}
+  
+body{
+    width: 90%;
+    margin: auto;
+    border-radius: 15px;
+    background-color: #AF8260 !important;
+    padding: 40px;
+    border: black 2px dashed;
+
+    box-shadow: 1px 3px 4px black;
+}
+
+.tituloAbout{
+    margin-bottom: 2rem;
+    text-align:center;
+}
+
+hr{
+    border: dashed 2px black;
+    margin: 40px;
+    color: #AF8260;
+
+}
+
+i{
+    margin-right: 20px;
+    color: #674329;
+}
+
+ul{
+    list-style: none;
+}

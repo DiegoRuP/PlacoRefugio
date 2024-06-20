@@ -1,0 +1,20 @@
+.containerMascota{
+    width: 90%;
+    margin: auto;
+    border-radius: 15px;
+    background-color: #AF8260;
+    padding: 40px;
+    border: black 2px dashed;
+
+    box-shadow: 1px 3px 4px black;
+}
+
+hr{
+    border: dashed 2px black;
+    color: #AF8260;
+}
+
+img{
+    border-radius: 15px;
+    margin-top: 20px;
+}

@@ -1,0 +1,33 @@
+<br>
+<form (ngSubmit)="onSubmit()">
+
+    <h2>Generar cita para  conocer a {{ nombreMascota }}</h2>
+    
+    <label for="telefono">Nombre completo</label>
+    <input type="text" [(ngModel)]="nombre" name="nombre" placeholder="Nombre">
+    <br>
+
+    <label for="telefono">Correo electrónico</label>
+    <input type="text" [(ngModel)]="correo" name="correo" placeholder="Correo electrónico">
+    <br>
+
+    <label for="telefono">Número telefónico</label>
+    <input type="number" [(ngModel)]="telefono" name="telefono" placeholder="Número telefónico">
+    <br>
+    <label for="hora">Hora de la cita</label>
+    <select [(ngModel)]="hora" name="hora" placeholder="Hora de la cita">
+        <option value="10">10:00 hrs</option>
+        <option value="11">11:00 hrs</option>
+        <option value="12">12:00 hrs</option>
+        <option value="13">13:00 hrs</option>
+        <option value="14">14:00 hrs</option>
+        <option value="12">15:00 hrs</option>
+        <option value="12">16:00 hrs</option>
+    </select>
+
+    <label for="fecha">Día de la cita:</label>
+    <input type="date" id="fecha" [(ngModel)]="fecha" name="fecha">
+
+    <br><br>
+    <button type="submit" class="btn btn-outline-dark btn-block">Agendar Cita</button>
+</form>

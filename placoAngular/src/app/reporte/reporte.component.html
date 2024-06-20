@@ -1,0 +1,54 @@
+<div class="containerReporte">
+    <h1>Citas Pasadas</h1>
+    <hr>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Teléfono</th>
+          <th>Hora</th>
+          <th>Fecha</th>
+          <th>Mascota</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cita of citasPasadas">
+          <td>{{ cita.nombre }}</td>
+          <td>{{ cita.correo }}</td>
+          <td>{{ cita.telefono }}</td>
+          <td>{{ cita.hora }} : 00 hrs</td>
+          <td>{{ cita.fecha }}</td>
+          <td>{{cita.nombreMascota}}</td>
+        </tr>
+      </tbody>
+    </table>
+  <br><br>
+    <h1>Citas Futuras</h1>
+    <hr>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Teléfono</th>
+          <th>Hora</th>
+          <th>Fecha</th>
+          <th>Mascota</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cita of citasFuturas">
+          <td>{{ cita.nombre }}</td>
+          <td>{{ cita.correo }}</td>
+          <td>{{ cita.telefono }}</td>
+          <td>{{ cita.hora }} : 00 hrs</td>
+          <td>{{ cita.fecha }}</td>
+          <td>{{ cita.nombreMascota }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+
+  
+</div>

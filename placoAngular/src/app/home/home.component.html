@@ -1,0 +1,99 @@
+<body>
+    <main>
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="../../assets/img/perroygatoInicio.jpg" class="d-block w-100 img-fluid" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="../../assets/img/perritoInicio.jpg" class="d-block w-100 img-fluid" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="../../assets/img/gatitoInicio.jpeg" class="d-block w-100 img-fluid" alt="...">
+            </div>
+          </div>
+        </div>      
+        <br><br>  
+        <!-- Informacion -->
+        <section id="informacion">
+          <div class="infNosotros">
+            <h2>¡Información que necesitas saber!</h2>
+    
+            <p>En PlacoRefugio, nuestra meta es facilitar que animales abandonados y maltratados encuentren hogares amorosos. 
+              Creemos que todas las mascotas merecen un lugar donde puedan ser queridas y ser parte de una familia. 
+              Nos esforzamos por unir a estos animales con personas comprometidas que estén dispuestas a darles el amor y los 
+              cuidados necesarios para una vida plena.</p>
+      
+            <p>En PlacoRefugio, no solo facilitamos adopciones, también educamos sobre la responsabilidad de tener mascotas, 
+              ofreciendo consejos de cuidado y promoviendo la esterilización y vacunación. Creemos en construir relaciones sólidas 
+              entre mascotas y sus familias adoptivas para un futuro lleno de amor y felicidad.</p>
+          </div>
+          <hr>
+          <div class="PasosAdoptar">
+            <h2>¿¡Como Adoptar!?</h2>
+    
+            <div class="Como-Adoptar">
+              <div class="Adoptar-ImgP">
+                <img src="../../assets/img/AdoptarPerro1.jpg" alt="Imagen 1">
+                <h3>Elige tu mascota</h3>
+                <p>Visita algun refugio o algun centro de animales. 
+                  Investiga las razas y tamaños para encontrar la mascota que mejor se adapte a tu estilo de vida. 
+                  Conoce a los animales disponibles y decide que mascota te acompañara en tu vida.</p>
+              </div>
+              <div class="Adoptar-ImgP">
+                <img src="../../assets/img/Adopcion2.jpg" alt="Imagen 2">
+                <h3>Proceso de adopción</h3>
+                <p>Llena  el formulario de solicitud y realiza el pago de una tarifa que cubre los 
+                  costos de esterilización, vacunas y microchip. Asiste a una entrevista donde demostrarás tu compromiso y 
+                  capacidad para brindar un hogar adecuado a tu nueva mascota.</p>
+              </div>
+              <div class="Adoptar-ImgP">
+                <img src="../../assets/img/PerroCasa3.png" alt="Imagen 3">
+                <h3>Llevalo a su hogar</h3>
+                <p>Adquiere los suministros básicos como comida, platos, cama y juguetes para recibir a tu nueva mascota.
+                  Asegura tu casa para evitar escapes o accidentes y crea un espacio cómodo y seguro donde 
+                  tu mascota pueda sentirse feliz y protegida.</p>
+              </div>
+              <div class="Adoptar-ImgP">
+                <img src="../../assets/img/PerroFeliz4.jpg" alt="Imagen 4">
+                <h3>Bienvenido a casa</h3>
+                <p>Bríndale atención, ejercicio y entrenamientos adecuados para construir una fuerte conexión y una vida 
+                  llena de momentos felices. Disfruta de la compañía 
+                  incondicional y el cariño de tu nueva mascota</p>
+              </div>
+            </div>
+          </div>
+          <hr>
+
+          <!-- Video de pipe proteccion -->
+
+          <h2>Lo importante que es adoptar</h2>
+
+          <div class="videoAdopcion">
+            <div class="videoWrapper">
+              <iframe 
+                width="560" 
+                height="315" 
+                [src]="video | videoAdoptar:'https://www.youtube.com/embed/'" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-inpicture" 
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+          <hr>
+          <h2>Elige a tu nuevo mejor amigo</h2>
+          <!-- Imagenes de Gato Y Perro -->
+          <div class="ImagenesGatoPerro">
+            <img src="../../assets/img/CaraPerro.png" alt="">
+            <img src="../../assets/img/CaraGato.png" alt="">
+          </div>
+          <!-- Boton para adoptar -->
+          <button class="btnAdoptar"><a (click)="redirectToAdopta()"><h1>¡Adopta Ya!</h1></a></button>
+          <hr>
+          <app-comentario></app-comentario>
+        </section>
+      </main>
+      <br><br>
+    </body>

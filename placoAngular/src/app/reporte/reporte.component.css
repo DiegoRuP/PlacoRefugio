@@ -1,0 +1,48 @@
+/* Estilos para las tablas */
+table {
+    width: 60%;
+    border-collapse: collapse;
+    margin-bottom: 20px; /* Espacio entre las tablas */
+    margin: auto;
+
+  }
+  /* Estilos para las celdas de encabezado */
+  th {
+    background-color: #f2f2f2; /* Color de fondo */
+    color: #333; /* Color del texto */
+    font-weight: bold; /* Negrita */
+    padding: 10px; /* Espaciado interno */
+    text-align: left; /* Alineación del texto */
+    border-bottom: 1px solid #ddd; /* Borde inferior */
+  }
+  
+  /* Estilos para las celdas de datos */
+  td {
+    padding: 10px; /* Espaciado interno */
+    border-bottom: 1px solid #ddd; /* Borde inferior */
+    background-color: white;
+
+  }
+  
+
+h1{
+    text-align: center;
+}
+
+.containerReporte{
+  width: 90%;
+    margin: auto;
+    border-radius: 15px;
+    background-color: #AF8260;
+    padding: 40px;
+    border: black 2px dashed;
+
+    box-shadow: 1px 3px 4px black;
+}
+  
+hr{
+  border: dashed 2px black;
+  margin: 40px;
+  color: #AF8260;
+
+}

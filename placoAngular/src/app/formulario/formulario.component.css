@@ -1,0 +1,54 @@
+form {
+    max-width: 100%; 
+    margin: 0 auto; 
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    text-align: center;
+
+    background-color: #DEAC80;
+    
+  }
+
+  button{
+    width: 80%;
+    
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: left;
+  }
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.alert-danger{
+  background-color: transparent;
+  border: none;
+  color: crimson;
+  text-align: center;
+}
+
+.alert-success{
+  background-color: transparent;
+  border: none;
+  color: green;
+  text-align: center;
+}

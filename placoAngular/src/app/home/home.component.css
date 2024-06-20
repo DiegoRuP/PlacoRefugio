@@ -1,0 +1,135 @@
+.carousel-inner .carousel-item img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 20px;
+}
+
+  #informacion {
+    max-width: 100%;
+    background-color: #b99d81;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  h2 {
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    color: black;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .Como-Adoptar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .Adoptar-ImgP {
+    text-align: center;
+  }
+  
+  .Adoptar-ImgP img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 80%;
+  }
+  
+  .Adoptar-ImgP h3 {
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .ImagenesGatoPerro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+  }
+  
+  .ImagenesGatoPerro img {
+    max-width: 300px;
+    max-height: 200px; 
+    margin: 50px;
+    box-sizing: border-box;
+  }
+  
+  .btnAdoptar{
+    background-image: linear-gradient(to right, #AF8260, #803D3B); 
+    color: #fff;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-bottom: 20px; 
+    transition: transform 0.3s ease, background-color 0.3s ease;     
+  }
+
+/* Efecto hover */
+
+.btnAdoptar:hover {
+  transform: translateY(-5px); 
+  background-color: #645A52; 
+}
+
+.btnAdoptar:active {
+  transform: scale(0.95);
+  transition: transform 0.2s ease;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+main{
+  width: 90%;
+  margin: auto;
+  border-radius: 15px;
+  background-color: #AF8260;
+  padding: 40px;
+  border: black 2px dashed;
+
+  box-shadow: 1px 3px 4px black;
+}
+
+
+hr{
+  border: dashed 2px black;
+  margin: 40px;
+  color: #AF8260;
+}
+
+.videoAdopcion {
+  width: 60%;
+  margin: auto;
+  
+}
+
+iframe{
+  border-radius: 15px;
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* Proporción 16:9 para videos */
+  height: 0;
+  overflow: hidden;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
