@@ -206,6 +206,34 @@
     height: 100%;
 }
 
+.inputBox input[type="submit"] {
+    background-color: #6F4E37;
+    color: white;
+    border: none;
+    font-size: 1.1em;
+    max-width: 120px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 14px 15px;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.inputBox input[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    background-color: #875f48;
+}
+
+.inputBox input[type="submit"]:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    background-color: #543a2d;
+}
+
+  
+
 /* Reponsive */
 
 @media (max-width: 991px){
@@ -243,4 +271,5 @@
     .contact{
         padding: 30px;
     }
+
 }
