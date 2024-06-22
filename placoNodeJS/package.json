@@ -1,11 +1,25 @@
 {
-  "name": "placonodejs",
+  "name": "placorefugio",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiegoRuP/PlacoRefugio.git"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "bugs": {
+    "url": "https://github.com/DiegoRuP/PlacoRefugio/issues"
+  },
+  "homepage": "https://github.com/DiegoRuP/PlacoRefugio#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "nodemailer": "^6.9.14"
+  }
 }

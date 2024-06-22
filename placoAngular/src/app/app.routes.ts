@@ -6,6 +6,8 @@ import { AboutComponent } from './about/about.component';
 import { ReporteComponent } from './reporte/reporte.component';
 import { UnaMascotaComponent } from './una-mascota/una-mascota.component';
 import { SearchComponent } from './search/search.component';
+import { FormularioComponent } from './formulario/formulario.component';
+import { CorreoComponent } from './correo/correo.component';
 
 
 export const routes: Routes = [
@@ -17,4 +19,5 @@ export const routes: Routes = [
     {path: 'reporte', component: ReporteComponent},
     {path: 'mascota/:id', component: UnaMascotaComponent},
     {path: 'buscador/:razam', component: SearchComponent},
+    {path: 'correo', component: CorreoComponent},
 ];
