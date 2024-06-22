@@ -21,9 +21,13 @@ export class CorreoComponent {
   constructor(private http: HttpClient) {}
 
   onSubmit() {
-    const cuerpoCorreo = `Hola ${this.nombre} ${this.apellido},\n\n`
-                       + `Tú mensaje fue: [${this.mensaje}].\n\n
-                          ¡Te atenderemos lo mas rapido posible!`;
+    const cuerpoCorreo = `        
+        Hola ${this.nombre} ${this.apellido},
+        Gracias por tu mensaje:\n
+        "- ${this.mensaje}"\n
+        Nos pondremos en contacto contigo lo más pronto posible.
+        Saludos cordiales,
+        Tu equipo PlacoRefugio`;
 
     const correo = {
       to: this.email,
