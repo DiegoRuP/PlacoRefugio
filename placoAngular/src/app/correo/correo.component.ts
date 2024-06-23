@@ -21,11 +21,13 @@ export class CorreoComponent {
   telefono: string = '';
   mensaje: string = '';
 
+  //Resultado del validator
   resultado!: string;
 
   //Validator personalizado para telefono
   telefonoValidator(control: FormControl): { [s: string]: boolean } | null {
-    const valor = control.value; //Se obtiene lo que esta en el formulario
+    //Se obtiene lo que esta en el formulario
+    const valor = control.value; 
     //En esta linea se especifica el formato o patron que queremos
     const valido = /^((\+91-?)|0)?[0-9]{10}$/.test(valor);
     //Retorna si es valido o no el telefono
