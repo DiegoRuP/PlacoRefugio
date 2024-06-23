@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { take } from 'rxjs/operators';
-import {AdoptaMascota} from '../interfaces/adopcion';
-import { Firestore, addDoc, collection, collectionData } from '@angular/fire/firestore';
+import { AdoptaMascota } from '../interfaces/adopcion';
+import { Firestore, addDoc, collection, collectionData, deleteDoc, doc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-
+import { Cita } from '../interfaces/citas';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +27,21 @@ export class AdopcionesService {
   getAdopciones(): Observable<AdoptaMascota[]> {
     const adopcionesCollection = collection(this.firestore, 'adopciones');
     return collectionData(adopcionesCollection, { idField: 'id' }) as Observable<AdoptaMascota[]>;
+  }
+
+   async addCita(cita: Cita): Promise<void> {
+    const citasCollection = collection(this.firestore, 'citas');
+    await addDoc(citasCollection, cita);
+  }
+
+  getCitas(): Observable<AdoptaMascota[]> {
+    const citasCollection = collection(this.firestore, 'citas');
+    return collectionData(citasCollection, { idField: 'id' }) as Observable<AdoptaMascota[]>;
+  }
+
+  deleteCita(cita: Cita){
+    const citasCollection = doc(this.firestore, `citas/${cita.nombre}` );
+    return deleteDoc(citasCollection);
   }
 
   // loadAdopciones(): void {

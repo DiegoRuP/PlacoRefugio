@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Input } from '@angular/core';
+import { AdopcionesService } from '../shared/adopciones.service';
 
 @Component({
   selector: 'app-formulario',
@@ -23,7 +24,7 @@ export class FormularioComponent implements OnInit {
 
   citas: any[] = [];
 
-  constructor() {}
+  constructor(private adopcionesService: AdopcionesService) {}
 
   mostrarError : boolean = false;
   mensajeDias : boolean = false;
@@ -88,38 +89,39 @@ export class FormularioComponent implements OnInit {
       nombreMascota: this.nombreMascota
     };
   
-    // Limpiar campos
-    this.nombre='';
-    this.correo='';
-    this.telefono=0;
-    this.hora=0;
-    this.fecha='';
-  
-    this.mostrarError = false;
-  
-    this.mostrarExito = true;
-  
-    // Ocultar alerta de éxito
-    setTimeout(() => {
-      this.mostrarExito = false;
-    }, 3000);
-  
-    this.citas.push(nuevaCita); // Agregar la cita a la lista
-    localStorage.setItem('citas', JSON.stringify(this.citas)); // Guardar la lista en localStorage
-    console.log('Cita guardada:', nuevaCita);
-  
-    console.log(this.nombreMascota);
-  
-    localStorage.setItem('fechaSeleccionada', this.fecha);
-  
-    Swal.fire({
-      icon: 'success',
-      title: '¡Cita agendada!',
-      text: 'La cita se ha agendado correctamente.'
+    this.adopcionesService.addCita(nuevaCita).then(() => {
+      // Limpiar campos
+      this.nombre='';
+      this.correo='';
+      this.telefono=0;
+      this.hora=0;
+      this.fecha='';
+    
+      this.mostrarError = false;
+    
+      this.mostrarExito = true;
+        
+      // Ocultar alerta de éxito
+      setTimeout(() => {
+        this.mostrarExito = false;
+      }, 3000);
+    
+      this.citas.push(nuevaCita); // Agregar la cita a la lista
+      localStorage.setItem('citas', JSON.stringify(this.citas)); // Guardar la lista en localStorage
+      console.log('Cita guardada:', nuevaCita);
+    
+      console.log(this.nombreMascota);
+    
+      localStorage.setItem('fechaSeleccionada', this.fecha);
+    
+      Swal.fire({
+        icon: 'success',
+        title: '¡Cita agendada!',
+        text: 'La cita se ha agendado correctamente.'
+      });
+
     });
   }
-  
-  
 
   ngOnInit(){
     const citasGuardadas = localStorage.getItem('citas');
