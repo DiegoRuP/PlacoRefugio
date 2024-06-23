@@ -28,6 +28,11 @@ export class RegistroComponent {
     alert("Usuario registrado");
     const rawForm = this.form.getRawValue();
     this.authService.registrar(rawForm.correo, rawForm.usuario, rawForm.contra, rawForm.telefono)
-      .subscribe(() => this.router.navigateByUrl('/home'));
+      .subscribe(() => this.router.navigateByUrl('/login'));
+      this.goToinicio();
+  }
+
+  goToinicio(){
+    this.router.navigateByUrl('/login');
   }
 }

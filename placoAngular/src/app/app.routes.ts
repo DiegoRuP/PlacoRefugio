@@ -9,6 +9,7 @@ import { SearchComponent } from './search/search.component';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { LogintelComponent } from './logintel/logintel.component';
+import { MisCitasComponent } from './mis-citas/mis-citas.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -22,4 +23,5 @@ export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'registro', component: RegistroComponent},
     {path: 'login-tel', component: LogintelComponent},
+    {path: 'misCitas', component: MisCitasComponent},
 ];

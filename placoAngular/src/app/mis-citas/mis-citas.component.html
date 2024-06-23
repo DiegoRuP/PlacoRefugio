@@ -1,0 +1,40 @@
+<div class="container mt-4">
+    <h2>Mis Citas</h2>
+    <ng-container *ngIf="citas$ | async as citas; else loading">
+      <div *ngIf="citas.length === 0">
+        <p>No tienes citas agendadas.</p>
+      </div>
+      <div *ngIf="citas.length > 0">
+        <table class="table table-striped table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Nombre Mascota</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Hora</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Teléfono</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cita of citas">
+              <td>{{ cita['nombreMascota'] }}</td>
+              <td>{{ cita['fecha'] | date: 'dd/MM/yyyy' }}</td>
+              <td>{{ cita['hora'] }}</td>
+              <td>{{ cita['nombre'] }}</td>
+              <td>{{ cita['correo'] }}</td>
+              <td>{{ cita['telefono'] }}</td>
+              <td>
+                <button class="btn btn-danger" (click)="cancelarCita(cita)">Cancelar Cita</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+    <ng-template #loading>
+      <p>Cargando tus citas...</p>
+    </ng-template>
+  </div>
+  
