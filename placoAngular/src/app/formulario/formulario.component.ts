@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Input } from '@angular/core';
 import { AdopcionesService } from '../shared/adopciones.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import Swal from 'sweetalert2';
+import { Firestore, collectionData, collection, addDoc, query, where, getDocs } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-formulario',
@@ -13,45 +15,37 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   templateUrl: './formulario.component.html',
   styleUrl: './formulario.component.css'
 })
-
 export class FormularioComponent implements OnInit {
-
   @Input() nombreMascota: string = '';
-  nombre: string ='';
-  correo: string ='';
+  nombre: string = '';
+  correo: string = '';
   telefono: number = 0;
   hora: number = 0;
-  fecha: string ='';
+  fecha: string = '';
 
   citas: any[] = [];
 
-  constructor(private adopcionesService: AdopcionesService, private http: HttpClient) {}
+  constructor(private adopcionesService: AdopcionesService, private http: HttpClient, private firestore: Firestore, private authService: AuthService) {}
 
-  mostrarError : boolean = false;
-  mensajeDias : boolean = false;
+  mostrarError: boolean = false;
+  mensajeDias: boolean = false;
   errorMensaje: string = '';
-  mensajeHora: boolean= false;
+  mensajeHora: boolean = false;
+  mostrarExito: boolean = false;
 
-  mostrarExito : boolean = false;
-
-  onSubmit(){
-    // Validar campos
+  async onSubmit() {
     if (!this.nombre || !this.correo || !this.telefono || !this.hora || !this.fecha) {
       Swal.fire({
         icon: 'error',
         title: 'Error...',
         text: 'Por favor, completa todos los campos'
       });
-      return; 
+      return;
     }
-  
-    // Convertir la fecha ingresada a un objeto Date
+
     const fechaSeleccionada = new Date(this.fecha);
-  
-    // Obtener la fecha actual
     const fechaActual = new Date();
-  
-    // Verificar si la fecha seleccionada es anterior a la fecha actual
+
     if (fechaSeleccionada < fechaActual) {
       Swal.fire({
         icon: 'error',
@@ -60,19 +54,14 @@ export class FormularioComponent implements OnInit {
       });
       return;
     }
-    
+
     const horaSeleccionada = this.hora;
-    
-    // Obtener citas para la fecha seleccionada
-    const citasFechaSeleccionada = this.citas.filter(cita => {
-      const citaFecha = new Date(cita.fecha);
-      return citaFecha.toDateString() === fechaSeleccionada.toDateString();
-    });
-  
-    // Verificar si ya hay una cita a la misma hora
-    const citaExistente = citasFechaSeleccionada.find(cita => cita.hora === horaSeleccionada);
-  
-    if (citaExistente) {
+    const citasRef = collection(this.firestore, 'citas');
+    const q = query(citasRef, where('fecha', '==', this.fecha), where('hora', '==', this.hora));
+    const querySnapshot = await getDocs(q);
+    const currentUser = this.authService.currentUserSig();
+
+    if (!querySnapshot.empty) {
       Swal.fire({
         icon: 'error',
         title: 'Error...',
@@ -80,7 +69,7 @@ export class FormularioComponent implements OnInit {
       });
       return;
     }
-  
+
     const nuevaCita = {
       nombre: this.nombre,
       correo: this.correo,
@@ -89,69 +78,52 @@ export class FormularioComponent implements OnInit {
       fecha: this.fecha,
       nombreMascota: this.nombreMascota
     };
-  
-    this.adopcionesService.addCita(nuevaCita).then(() => {
-      // Limpiar campos
-      this.nombre='';
-      this.correo='';
-      this.telefono=0;
-      this.hora=0;
-      this.fecha='';
-    
-      this.mostrarError = false;
-    
-      this.mostrarExito = true;
-        
-      // Ocultar alerta de éxito
-      setTimeout(() => {
-        this.mostrarExito = false;
-      }, 3000);
-    
-      this.citas.push(nuevaCita); // Agregar la cita a la lista
-      localStorage.setItem('citas', JSON.stringify(this.citas)); // Guardar la lista en localStorage
-      console.log('Cita guardada:', nuevaCita);
-    
-      console.log(this.nombreMascota);
-    
-      localStorage.setItem('fechaSeleccionada', this.fecha);
-    
-      Swal.fire({
-        icon: 'success',
-        title: '¡Cita agendada!',
-        text: 'La cita se ha agendado correctamente.'
-      });
 
-    });
-    
-      // Enviar datos al servidor para agendar la cita y enviar el correo electrónico
-      this.http.post('http://localhost:3000/agendar-cita', nuevaCita).subscribe(
-        (response: any) => {
-          console.log('Cita agendada:', response);
-          Swal.fire({
-            icon: 'success',
-            title: '¡Cita agendada!',
-            text: 'La cita se ha agendado correctamente.'
-          });
-        },
-        (error: HttpErrorResponse) => {
-          console.error('Error al agendar la cita:', error);
-          Swal.fire({
-            icon: 'error',
-            title: 'Error...',
-            text: 'Hubo un problema al agendar la cita, por favor intenta de nuevo más tarde.'
-          });
-        }
-      );
-    }
-  
-    ngOnInit() {
-      const citasGuardadas = localStorage.getItem('citas');
-      if (citasGuardadas) {
-        this.citas = JSON.parse(citasGuardadas); // Recuperar la lista del localstorage
-      }
-    }
-  
-    ordenarCitasPorFecha(citas: any[]): any[] {
-      return citas.sort((a, b) => new Date(a.fecha).getTime() - new Date(b.fecha).getTime());
-    }
+    this.nombre = '';
+    this.correo = '';
+    this.telefono = 0;
+    this.hora = 0;
+    this.fecha = '';
+
+    this.mostrarError = false;
+    this.mostrarExito = true;
+
+    setTimeout(() => {
+      this.mostrarExito = false;
+    }, 3000);
+
+    this.http.post('http://localhost:3000/agendar-cita', nuevaCita).subscribe(
+      (response: any) => {
+        addDoc(citasRef, nuevaCita);
+        Swal.fire({
+          icon: 'success',
+          title: '¡Cita agendada!',
+          text: 'La cita se ha agendado correctamente.'
+        });
+      },
+      (error: HttpErrorResponse) => {
+        console.error('Error al agendar la cita:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error...',
+          text: 'Hubo un problema al agendar la cita, por favor intenta de nuevo más tarde.'
+        });
+      });
   }
+
+  async ngOnInit() {
+    const currentUser = this.authService.currentUserSig();
+    if (currentUser) {
+      this.correo = currentUser.correo;
+    }
+    
+    const citasRef = collection(this.firestore, 'citas');
+    const q = query(citasRef);
+    const querySnapshot = await getDocs(q);
+    this.citas = querySnapshot.docs.map(doc => doc.data());
+  }
+
+  ordenarCitasPorFecha(citas: any[]): any[] {
+    return citas.sort((a, b) => new Date(a.fecha).getTime() - new Date(b.fecha).getTime());
+  }
+}

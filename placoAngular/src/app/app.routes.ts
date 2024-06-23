@@ -8,7 +8,10 @@ import { UnaMascotaComponent } from './una-mascota/una-mascota.component';
 import { SearchComponent } from './search/search.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { CorreoComponent } from './correo/correo.component';
-
+import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
+import { LogintelComponent } from './logintel/logintel.component';
+import { MisCitasComponent } from './mis-citas/mis-citas.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -20,4 +23,8 @@ export const routes: Routes = [
     {path: 'mascota/:id', component: UnaMascotaComponent},
     {path: 'buscador/:razam', component: SearchComponent},
     {path: 'correo', component: CorreoComponent},
+    {path: 'login', component: LoginComponent},
+    {path: 'registro', component: RegistroComponent},
+    {path: 'login-tel', component: LogintelComponent},
+    {path: 'misCitas', component: MisCitasComponent},
 ];

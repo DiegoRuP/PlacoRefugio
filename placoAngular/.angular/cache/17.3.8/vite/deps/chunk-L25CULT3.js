@@ -57,11 +57,7 @@ import {
   ɵɵinject,
   ɵɵinjectAttribute,
   ɵɵstyleProp
-<<<<<<<< HEAD:placoAngular/.angular/cache/17.3.8/vite/deps/chunk-L25CULT3.js
 } from "./chunk-OY3Y7ZK5.js";
-========
-} from "./chunk-RNTWXBS4.js";
->>>>>>>> origin/rama-navarro:placoAngular/.angular/cache/17.3.8/vite/deps/chunk-QEWWU7ML.js
 import {
   __spreadProps,
   __spreadValues
@@ -5035,8 +5031,4 @@ export {
    * License: MIT
    *)
 */
-<<<<<<<< HEAD:placoAngular/.angular/cache/17.3.8/vite/deps/chunk-L25CULT3.js
 //# sourceMappingURL=chunk-L25CULT3.js.map
-========
-//# sourceMappingURL=chunk-QEWWU7ML.js.map
->>>>>>>> origin/rama-navarro:placoAngular/.angular/cache/17.3.8/vite/deps/chunk-QEWWU7ML.js

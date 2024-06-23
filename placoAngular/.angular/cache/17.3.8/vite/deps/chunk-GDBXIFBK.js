@@ -1,29 +1,16 @@
 import {
-<<<<<<<< HEAD:placoAngular/.angular/cache/17.3.8/vite/deps/chunk-JMGKJLAU.js
   CdkScrollableModule,
   ScrollDispatcher,
   ScrollingModule,
   ViewportRuler
-} from "./chunk-UIUA2KST.js";
+} from "./chunk-33LUBR2I.js";
 import {
-========
->>>>>>>> origin/rama-navarro:placoAngular/.angular/cache/17.3.8/vite/deps/chunk-TI45G7U3.js
   animate,
   state,
   style,
   transition,
   trigger
-<<<<<<<< HEAD:placoAngular/.angular/cache/17.3.8/vite/deps/chunk-JMGKJLAU.js
 } from "./chunk-AQTJFAZO.js";
-========
-} from "./chunk-SCSIGSWH.js";
-import {
-  CdkScrollableModule,
-  ScrollDispatcher,
-  ScrollingModule,
-  ViewportRuler
-} from "./chunk-FQGDFI4Y.js";
->>>>>>>> origin/rama-navarro:placoAngular/.angular/cache/17.3.8/vite/deps/chunk-TI45G7U3.js
 import {
   A11yModule,
   AriaDescriber,
@@ -42,21 +29,13 @@ import {
   hasModifierKey,
   normalizePassiveListenerOptions,
   supportsScrollBehavior
-<<<<<<<< HEAD:placoAngular/.angular/cache/17.3.8/vite/deps/chunk-JMGKJLAU.js
-} from "./chunk-OPMF33NR.js";
-========
-} from "./chunk-PDQKLVMG.js";
->>>>>>>> origin/rama-navarro:placoAngular/.angular/cache/17.3.8/vite/deps/chunk-TI45G7U3.js
+} from "./chunk-FQJPETMT.js";
 import {
   CommonModule,
   DOCUMENT,
   Location,
   NgClass
-<<<<<<<< HEAD:placoAngular/.angular/cache/17.3.8/vite/deps/chunk-JMGKJLAU.js
 } from "./chunk-L25CULT3.js";
-========
-} from "./chunk-QEWWU7ML.js";
->>>>>>>> origin/rama-navarro:placoAngular/.angular/cache/17.3.8/vite/deps/chunk-TI45G7U3.js
 import {
   ANIMATION_MODULE_TYPE,
   ApplicationRef,
@@ -112,14 +91,10 @@ import {
   ɵɵtext,
   ɵɵtextInterpolate,
   ɵɵviewQuery
-<<<<<<<< HEAD:placoAngular/.angular/cache/17.3.8/vite/deps/chunk-JMGKJLAU.js
 } from "./chunk-OY3Y7ZK5.js";
 import {
   merge
 } from "./chunk-QMHGNXJZ.js";
-========
-} from "./chunk-RNTWXBS4.js";
->>>>>>>> origin/rama-navarro:placoAngular/.angular/cache/17.3.8/vite/deps/chunk-TI45G7U3.js
 import {
   Subject,
   Subscription,
@@ -127,11 +102,7 @@ import {
   take,
   takeUntil,
   takeWhile
-<<<<<<<< HEAD:placoAngular/.angular/cache/17.3.8/vite/deps/chunk-JMGKJLAU.js
 } from "./chunk-DCJ5MGHI.js";
-========
-} from "./chunk-ZVBSA522.js";
->>>>>>>> origin/rama-navarro:placoAngular/.angular/cache/17.3.8/vite/deps/chunk-TI45G7U3.js
 import {
   __spreadProps,
   __spreadValues
@@ -4330,8 +4301,4 @@ export {
   matTooltipAnimations,
   MatTooltipModule
 };
-<<<<<<<< HEAD:placoAngular/.angular/cache/17.3.8/vite/deps/chunk-JMGKJLAU.js
-//# sourceMappingURL=chunk-JMGKJLAU.js.map
-========
-//# sourceMappingURL=chunk-TI45G7U3.js.map
->>>>>>>> origin/rama-navarro:placoAngular/.angular/cache/17.3.8/vite/deps/chunk-TI45G7U3.js
+//# sourceMappingURL=chunk-GDBXIFBK.js.map
