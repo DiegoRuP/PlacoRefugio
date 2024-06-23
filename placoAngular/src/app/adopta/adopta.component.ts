@@ -4,6 +4,7 @@ import { AdoptaMascota } from '../interfaces/adopcion';
 import { RouterModule } from '@angular/router';
 import { MASCOTAS } from '../misMascotas'; // Importa el array MASCOTAS
 import { MascotaService } from '../shared/mascota.service';
+import { CargandoService } from '../cargando.service';
 
 @Component({
   selector: 'app-adopta',
@@ -17,11 +18,11 @@ export class AdoptaComponent {
 
   adopciones: AdoptaMascota[] = [];
 
-  constructor(public adopcionesService: AdopcionesService) {
+  constructor(private cargandoService: CargandoService, public adopcionesService: AdopcionesService) {
   }
 
   ngOnInit(): void {
-    console.log("En este momento el componente se cargó");
+    this.cargandoService.mostrarCarga();
     this.recuperarDatos();
   }
 
@@ -30,9 +31,11 @@ export class AdoptaComponent {
     this.adopcionesService.getAdopciones().subscribe({
       next: (data) => {
         this.successRequest(data);
+        this.cargandoService.ocultarCarga();
       },
       error: (error) => {
         console.error("Error al recuperar datos", error);
+        this.cargandoService.ocultarCarga();
       }
     });
   }

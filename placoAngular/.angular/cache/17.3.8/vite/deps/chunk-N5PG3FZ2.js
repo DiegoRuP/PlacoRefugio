@@ -10,13 +10,15 @@ import {
   VERSION,
   Version,
   makeEnvironmentProviders,
-  queueScheduler,
   setClassMetadata,
   ɵɵdefineInjectable,
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵinject
-} from "./chunk-PUL4GNPH.js";
+} from "./chunk-M3NV2L4Z.js";
+import {
+  queueScheduler
+} from "./chunk-EJKICZE7.js";
 import {
   Observable,
   asyncScheduler,
@@ -27,7 +29,7 @@ import {
   subscribeOn,
   tap,
   timer
-} from "./chunk-DCLGO6TI.js";
+} from "./chunk-MWEEZMJP.js";
 import {
   __async,
   __spreadProps,
@@ -2908,4 +2910,4 @@ firebase/app/dist/esm/index.esm.js:
    * limitations under the License.
    *)
 */
-//# sourceMappingURL=chunk-X2EGSKD5.js.map
+//# sourceMappingURL=chunk-N5PG3FZ2.js.map

@@ -12,11 +12,14 @@ import { TablaComponent } from './tabla/tabla.component';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { ComentarioComponent } from './comentario/comentario.component';
 import { AdopcionesService } from './shared/adopciones.service';
+import { PantallaCargaComponent } from './pantalla-carga/pantalla-carga.component';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, NavbarComponent, HomeComponent, AdoptaComponent, GaleriaComponent, AboutComponent, ReporteComponent, FooterComponent, FormularioComponent, TablaComponent, PaginatorComponent, ComentarioComponent],
+  imports: [RouterOutlet,  CommonModule,  RouterModule, NavbarComponent, HomeComponent, AdoptaComponent, GaleriaComponent, AboutComponent, ReporteComponent, FooterComponent, FormularioComponent, TablaComponent, PaginatorComponent, ComentarioComponent, PantallaCargaComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
