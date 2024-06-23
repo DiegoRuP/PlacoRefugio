@@ -23,7 +23,7 @@ export class FormularioComponent implements OnInit {
 
   citas: any[] = [];
 
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore, private authService: AuthService) {}
 
   mostrarError: boolean = false;
   mensajeDias: boolean = false;
@@ -57,6 +57,7 @@ export class FormularioComponent implements OnInit {
     const citasRef = collection(this.firestore, 'citas');
     const q = query(citasRef, where('fecha', '==', this.fecha), where('hora', '==', this.hora));
     const querySnapshot = await getDocs(q);
+    const currentUser = this.authService.currentUserSig();
 
     if (!querySnapshot.empty) {
       Swal.fire({
@@ -67,11 +68,11 @@ export class FormularioComponent implements OnInit {
       return;
     }
 
-    AuthService.currentUser.correo = this.correo;
+    
 
     const nuevaCita = {
       nombre: this.nombre,
-      correo: AuthService.usuario.correo,
+      correo: this.correo,
       telefono: this.telefono,
       hora: this.hora,
       fecha: this.fecha,
@@ -100,6 +101,11 @@ export class FormularioComponent implements OnInit {
   }
 
   async ngOnInit() {
+    const currentUser = this.authService.currentUserSig();
+    if (currentUser) {
+      this.correo = currentUser.correo;
+    }
+    
     const citasRef = collection(this.firestore, 'citas');
     const q = query(citasRef);
     const querySnapshot = await getDocs(q);
