@@ -11,6 +11,7 @@ import { FormularioComponent } from './formulario/formulario.component';
 import { TablaComponent } from './tabla/tabla.component';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { ComentarioComponent } from './comentario/comentario.component';
+import { AdopcionesService } from './shared/adopciones.service';
 
 @Component({
   selector: 'app-root',
@@ -21,4 +22,8 @@ import { ComentarioComponent } from './comentario/comentario.component';
 })
 export class AppComponent {
   title = 'refugioDIJK';
+  constructor(private adopcionesService: AdopcionesService) {}
+  ngOnInit(): void {
+    //this.adopcionesService.loadAdopciones();
+  }
 }

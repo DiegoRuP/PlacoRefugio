@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "refugioDIJK": {
+    "refugiodijk": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "refugioDIJK:build:production"
+              "buildTarget": "refugiodijk:build:production"
             },
             "development": {
-              "buildTarget": "refugioDIJK:build:development"
+              "buildTarget": "refugiodijk:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "refugioDIJK:build"
+            "buildTarget": "refugiodijk:build"
           }
         },
         "test": {

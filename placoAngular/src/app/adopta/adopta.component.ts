@@ -26,19 +26,23 @@ export class AdoptaComponent {
   }
 
   recuperarDatos() {
-    console.log("Estoy dentro");
-
-    this.adopcionesService.retornar().subscribe({
-      next: this.successRequest.bind(this)
+    console.log("Recuperando datos de Firebase");
+    this.adopcionesService.getAdopciones().subscribe({
+      next: (data) => {
+        this.successRequest(data);
+      },
+      error: (error) => {
+        console.error("Error al recuperar datos", error);
+      }
     });
   }
 
-  successRequest(data: any): void {
-    console.log("Data", data);
-    this.adopciones = data.adopciones;
-    console.log("Array", this.adopciones);
+  successRequest(data: AdoptaMascota[]): void {
+    console.log("Datos recibidos de Firebase", data);
+    this.adopciones = data;
+    console.log("Array de adopciones", this.adopciones);
 
     // Asigna los datos de adopciones a MASCOTAS
-    MASCOTAS.splice(0, MASCOTAS.length, ...this.adopciones);
+    //MASCOTAS.splice(0, MASCOTAS.length, ...this.adopciones);
   }
 }
