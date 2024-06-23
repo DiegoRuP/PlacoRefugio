@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Input } from '@angular/core';
 import { AdopcionesService } from '../shared/adopciones.service';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-formulario',
@@ -24,7 +25,7 @@ export class FormularioComponent implements OnInit {
 
   citas: any[] = [];
 
-  constructor(private adopcionesService: AdopcionesService) {}
+  constructor(private adopcionesService: AdopcionesService, private http: HttpClient) {}
 
   mostrarError : boolean = false;
   mensajeDias : boolean = false;
@@ -121,15 +122,36 @@ export class FormularioComponent implements OnInit {
       });
 
     });
+    
+      // Enviar datos al servidor para agendar la cita y enviar el correo electrónico
+      this.http.post('http://localhost:3000/agendar-cita', nuevaCita).subscribe(
+        (response: any) => {
+          console.log('Cita agendada:', response);
+          Swal.fire({
+            icon: 'success',
+            title: '¡Cita agendada!',
+            text: 'La cita se ha agendado correctamente.'
+          });
+        },
+        (error: HttpErrorResponse) => {
+          console.error('Error al agendar la cita:', error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Hubo un problema al agendar la cita, por favor intenta de nuevo más tarde.'
+          });
+        }
+      );
+    }
+  
+    ngOnInit() {
+      const citasGuardadas = localStorage.getItem('citas');
+      if (citasGuardadas) {
+        this.citas = JSON.parse(citasGuardadas); // Recuperar la lista del localstorage
+      }
+    }
+  
+    ordenarCitasPorFecha(citas: any[]): any[] {
+      return citas.sort((a, b) => new Date(a.fecha).getTime() - new Date(b.fecha).getTime());
+    }
   }
-
-  ngOnInit(){
-    const citasGuardadas = localStorage.getItem('citas');
-    if (citasGuardadas) {
-      this.citas = JSON.parse(citasGuardadas); // Recuperar la lista del localstorage
-    } 
-  }
-  ordenarCitasPorFecha(citas: any[]): any[] {
-    return citas.sort((a, b) => new Date(a.fecha).getTime() - new Date(b.fecha).getTime());
-  }
-}
