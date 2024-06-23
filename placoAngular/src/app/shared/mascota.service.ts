@@ -12,10 +12,12 @@ export class MascotaService {
   constructor() { }
 
   getMascotas(): AdoptaMascota[] {
+    console.log("Mascotas", this.mascotas);
     return this.mascotas;
   }
 
   getUnaAdopcion(posicion:number):AdoptaMascota{
+    console.log("Mascota", this.mascotas[posicion]);
     return this.mascotas[posicion]
   }
 

@@ -43,6 +43,6 @@ export class AdoptaComponent {
     console.log("Array de adopciones", this.adopciones);
 
     // Asigna los datos de adopciones a MASCOTAS
-    //MASCOTAS.splice(0, MASCOTAS.length, ...this.adopciones);
+    MASCOTAS.splice(0, MASCOTAS.length, ...this.adopciones);
   }
 }
