@@ -1,18 +1,45 @@
-<body>
+<body id="content">
+  
+  <div class="dropdown nav-item item-float">
+    <a class="nav-link nav-link dropdown-toggle">
+      <i class="fa-solid fa-universal-access fa-xl"></i>
+    </a>
+    <div class="dropdown-content" [style.fontSize.px]="fontSize">
+      <a class="dropdown-item nav-style" (click)="readContent()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+        Leer texto <i class="fa-solid fa-play fa-lg pl-3"></i>
+       </a>
+       <a class="navbar-item nav-style" (click)="increaseFontSize()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+         Aumentar texto <i class="fa-solid fa-plus fa-lg pl-3"></i>
+       </a>
+       <a class="navbar-item nav-style" (click)="decreaseFontSize()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+         Decrementar texto <i class="fa-solid fa-minus fa-lg pl-3"></i>
+       </a>
+       <a class="navbar-item nav-style" (click)="increasePadding()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+         Aumentar espaciado <i class="fa-solid fa-boxes-stacked fa-lg pl-3"></i>
+       </a>
+       <a class="navbar-item nav-style" (click)="toggleContrast()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+         Cambiar contraste <i class="fa-solid fa-droplet fa-lg pl-3"></i>
+       </a>
+       <a class="navbar-item nav-style" (click)="toggleDyslexicFont()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+         Tipografia para dislexicos <i class="fa-solid fa-font fa-lg pl-3"></i>
+       </a>
+    </div>
+  </div>
+
   <h1 class="tituloAbout"> Acerca de nosotros </h1>
   <hr>
 
 <!-- uso de ngstyle -->
-<div class="informacion" [ngStyle]="{color: colorInfo}" matTooltip="Información sobre el refugio">
-  <h2><i class="fa-solid fa-flag"></i> Nuestra Misión </h2>
+<div class="informacion" [ngStyle]="{color: colorInfo}" matTooltip="Información sobre el refugio" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [style.fontSize.px]="fontSize" [class]="isContrastMode ? 'dark-contrast' : ''">
+  <h2 [style.fontSize.px]="fontSize"><i class="fa-solid fa-flag"></i> Nuestra Misión </h2>
     <p>Nuestra misión es proporcionar un refugio seguro, amoroso y compasivo para animales sin hogar, brindándoles atención médica, nutrición adecuada y un entorno enriquecedor mientras buscamos activamente hogares permanentes para cada uno de ellos.</p>
     <br><br>
 
-    <h2><i class="fa-solid fa-eye"></i>Nuestra Visión</h2>
+    <h2 [style.fontSize.px]="fontSize"><i class="fa-solid fa-eye"></i>Nuestra Visión</h2>
     <p>Nuestra visión es construir un mundo donde todos los animales sean tratados con compasión, respeto y dignidad. Nos esforzamos por ser un refugio líder que inspire a otros a unirse a nuestra causa y a trabajar juntos hacia un futuro en el que ningún animal tenga que sufrir por falta de un hogar amoroso.</p>
     <br><br>
 
-    <h2><i class="fa-solid fa-bullseye"></i>Nuestras Metas</h2>
+    <h2 [style.fontSize.px]="fontSize"><i class="fa-solid fa-bullseye"></i>Nuestras Metas</h2>
     <ul>
       <li><i class="fa-solid fa-paw fa-sm"></i>Rescatar y rehabilitar animales en situación de abandono, maltrato o riesgo, brindándoles los cuidados necesarios para su recuperación física y emocional.</li>
       <li><i class="fa-solid fa-paw fa-sm"></i>Promover activamente la adopción de nuestros residentes, asegurando que cada animal encuentre un hogar permanente y amoroso.</li>
@@ -24,48 +51,93 @@
 </div>
 
 <hr>
-<div class="card-group">
-    <div class="card" matTooltip="Diego Ruan">
+<div class="card-group" [ngStyle]="{color: colorInfo}" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [style.fontSize.px]="fontSize">
+    <div class="card" matTooltip="Diego Ruan" [class]="isContrastMode ? 'dark-contrast' : ''" [style.padding.px]="paddingSize">
       <img src="../../assets/img/ruan.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
         <hr>
-        <h5 class="card-title">Diego Ruan</h5>
+        <h5 class="card-title" [style.fontSize.px]="fontSize"><strong>Diego Ruan</strong></h5>
         <p>Estudiante de la Universidad Autonoma de Aguascalientes</p>
       </div>
     </div>
     
-    <div class="card" matTooltip="Kevin Calvillo">
+    <div class="card" matTooltip="Kevin Calvillo" [class]="isContrastMode ? 'dark-contrast' : ''" [style.padding.px]="paddingSize">
       <img src="../../assets/img/kevin.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
         <hr>
-        <h5 class="card-title">Kevin Calvillo</h5>
+        <h5 class="card-title" [style.fontSize.px]="fontSize"><strong>Kevin Calvillo</strong></h5>
         <p>Estudiante de la Universidad Autonoma de Aguascalientes</p>
       </div>
     </div>
 
-    <div class="card" matTooltip="Johann Balderas">
+    <div class="card" matTooltip="Johann Balderas" [class]="isContrastMode ? 'dark-contrast' : ''" [style.padding.px]="paddingSize">
       <img src="../../assets/img/johann.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
         <hr>
-        <h5 class="card-title">Johann Balderas</h5>
+        <h5 class="card-title" [style.fontSize.px]="fontSize"><strong>Johann Balderas</strong></h5>
         <p>Estudiante de la Universidad Autonoma de Aguascalientes</p>
       </div>
     </div>
 
-    <div class="card" matTooltip="Iván Bayona">
+    <div class="card" matTooltip="Iván Bayona" [class]="isContrastMode ? 'dark-contrast' : ''" [style.padding.px]="paddingSize">
         <img src="../../assets/img/ivan.jpeg" class="card-img-top" alt="...">
         <div class="card-body">
           <hr>
-          <h5 class="card-title">Iván Bayona</h5>
+          <h5 class="card-title" [style.fontSize.px]="fontSize"><strong>Iván Bayona</strong></h5>
           <p>Estudiante de la Universidad Autonoma de Aguascalientes</p>
         </div>
     </div>
 </div>
 
+<div class="card-group" [ngStyle]="{color: colorInfo}" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [style.fontSize.px]="fontSize">
+  <div class="card" matTooltip="Noe Roman" [class]="isContrastMode ? 'dark-contrast' : ''" [style.padding.px]="paddingSize">
+    <img src="../../assets/img/noe.jpeg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <hr>
+      <h5 class="card-title" [style.fontSize.px]="fontSize"><strong>Noe Roman</strong></h5>
+      <p>Estudiante de la Universidad Autonoma de Aguascalientes y chivista de corazon</p>
+    </div>
+  </div>
+  
+  <div class="card" matTooltip="Alejandro Cedeno" [class]="isContrastMode ? 'dark-contrast' : ''" [style.padding.px]="paddingSize">
+    <img src="../../assets/img/exede.jpeg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <hr>
+      <h5 class="card-title" [style.fontSize.px]="fontSize"><strong>Alejandro Cedeno</strong></h5>
+      <p>Estudiante de la Universidad Autonoma de Aguascalientes</p>
+    </div>
+  </div>
+
+  <div class="card" matTooltip="Edgar Miranda" [class]="isContrastMode ? 'dark-contrast' : ''" [style.padding.px]="paddingSize">
+    <img src="../../assets/img/edgar.jpeg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <hr>
+      <h5 class="card-title" [style.fontSize.px]="fontSize"><strong>Edgar Miranda</strong></h5>
+      <p>Estudiante de la Universidad Autonoma de Aguascalientes</p>
+    </div>
+  </div>
+
+  <div class="card" matTooltip="Octavio Gutierrez" [class]="isContrastMode ? 'dark-contrast' : ''" [style.padding.px]="paddingSize">
+      <img src="../../assets/img/8vio.jpeg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <hr>
+        <h5 class="card-title" [style.fontSize.px]="fontSize"><strong>Octavio Gutierrez</strong></h5>
+        <p>Estudiante de la Universidad Autonoma de Aguascalientes</p>
+      </div>
+  </div>
+  <div class="card" matTooltip="Diego Navarro" [class]="isContrastMode ? 'dark-contrast' : ''" [style.padding.px]="paddingSize">
+    <img src="../../assets/img/10.jpeg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <hr>
+      <h5 class="card-title" [style.fontSize.px]="fontSize"><strong>Diego Navarro</strong></h5>
+      <p>Estudiante de la Universidad Autonoma de Aguascalientes</p>
+    </div>
+  </div>
+</div>
 <hr>
 
-<div id="texto">
-    <h5>Esta página web forma parte de un proyecto académico, el refugio NO es real</h5>
+<div id="texto" [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize">
+    <h5 [style.fontSize.px]="fontSize">Esta página web forma parte de un proyecto académico, el refugio NO es real</h5>
     <br><br>
     <p>Universidad Autónoma de Aguascalientes</p>
     <p>Materia: Tecnologías web</p>
