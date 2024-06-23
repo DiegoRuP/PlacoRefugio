@@ -18,6 +18,7 @@ export class HomeComponent {
   array:any[]=[];
   ruta:string="";
   nombre:string="";
+  
   constructor(private router: Router, private apiBDService:ObtencionNodeJSService) {}
 
   generarQRMascota(){
