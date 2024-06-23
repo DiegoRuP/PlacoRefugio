@@ -5,11 +5,13 @@ import { ComentarioComponent } from '../comentario/comentario.component';
 import { VideoAdoptarPipe } from './video-adoptar.pipe';
 import { QRCodeModule } from 'angularx-qrcode';
 import { ObtencionNodeJSService } from '../shared/obtencion-node-js.service';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet, VideoAdoptarPipe, ComentarioComponent,QRCodeModule],
+  imports: [RouterOutlet, VideoAdoptarPipe, ComentarioComponent,QRCodeModule, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -18,7 +20,7 @@ export class HomeComponent {
   array:any[]=[];
   ruta:string="";
   nombre:string="";
-  
+
   constructor(private router: Router, private apiBDService:ObtencionNodeJSService) {}
 
   generarQRMascota(){

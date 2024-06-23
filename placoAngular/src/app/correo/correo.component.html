@@ -10,34 +10,86 @@
                 <h3>Manda tu mensaje</h3>
 
 
-                <form (ngSubmit)="onSubmit()">
+                <form [formGroup]="formularioContacto" (ngSubmit)="onSubmit()">
                     <div class="formBox">
                         <div class="row50">
                             <div class="inputBox">
                                 <span>Nombre</span>
-                                <input type="text" placeholder="Nombre" id="nombre" name="nombre" [(ngModel)]="nombre">
+                                <input type="text" placeholder="Nombre" id="nombre" name="nombre" [(ngModel)]="nombre" formControlName="nombre">
+                                @if (this.formularioContacto.get('nombre')?.errors?.['required']) {
+                                    <span>
+                                      (El nombre no puede quedar vacio)
+                                    </span>
+                            
+                                  }
+                                  @if (this.formularioContacto.get('nombre')?.errors?.['minlength']) {
+                                    <span>
+                                      (Debe tener como minimo 3 caracteres)
+                                    </span>
+                                  }
                             </div>
                             <div class="inputBox">
                                 <span>Apellidos</span>
-                                <input type="text" placeholder="Apellidos" id="apellidos" name="apellidos" [(ngModel)]="apellido">
+                                <input type="text" placeholder="Apellidos" id="apellidos" name="apellidos" [(ngModel)]="apellido" formControlName="apellido" required>
+                                @if (this.formularioContacto.get('apellido')?.errors?.['required']) {
+                                    <span>
+                                      (Los apellidos no pueden quedar vacios)
+                                    </span>
+                            
+                                  }
+                                  @if (this.formularioContacto.get('apellido')?.errors?.['minlength']) {
+                                    <span>
+                                      (Deben tener como minimo 3 caracteres)
+                                    </span>
+                                  }
                             </div>
                         </div>
 
                         <div class="row50">
                             <div class="inputBox">
                                 <span>Email</span>
-                                <input type="text" placeholder="Email" id="email" name="email" [(ngModel)]="email">
+                                <input type="text" placeholder="Email" id="email" name="email" [(ngModel)]="email" formControlName="email" required>
+                                @if (this.formularioContacto.get('email')?.errors?.['required']) {
+                                    <span>
+                                      (El mail no puede quedar vacio)
+                                    </span>
+                                  }
+                                  @if (this.formularioContacto.get('email')?.errors?.['email']) {
+                                    <span>
+                                      (El mail no es valido)
+                                    </span>
+                                  }
                             </div>
                             <div class="inputBox">
                                 <span>Telefono</span>
-                                <input type="text" placeholder="Telefono" id="telefono" name="telefono" [(ngModel)]="telefono">
+                                <input type="text" placeholder="Telefono" id="telefono" name="telefono" [(ngModel)]="telefono" formControlName="telefono" required>
+                                @if (this.formularioContacto.get('telefono')?.errors?.['required']) {
+                                    <span>
+                                      (El telefono no puede quedar vacio)
+                                    </span>
+                                  }
+                                  @if (this.formularioContacto.get('telefono')?.errors?.['telefonoInvalido']) {
+                                    <span>
+                                      (El telefono no es valido)
+                                    </span>
+                                  }
                             </div>
                         </div>
 
                         <div class="row100">
                             <div class="inputBox">
                                 <span>Mensaje</span>
-                                <textarea name="mensaje" id="mensaje" placeholder="Manda tu mensaje" [(ngModel)]="mensaje"></textarea>
+                                <textarea name="mensaje" id="mensaje" placeholder="Manda tu mensaje" [(ngModel)]="mensaje" formControlName="mensaje" required></textarea>
+                                @if (this.formularioContacto.get('mensaje')?.errors?.['required']) {
+                                    <div>
+                                      (El mensaje no puede quedar vacio)
+                                    </div>
+                                  }
+                                  @if (this.formularioContacto.get('mensaje')?.errors?.['maxlength']) {
+                                    <div>
+                                      (Debe tener como maximo 500 caracteres)
+                                    </div>
+                                  }
                             </div>
                         </div>
                         <br><br>

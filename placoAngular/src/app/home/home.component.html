@@ -49,28 +49,32 @@
             <div class="Como-Adoptar">
               <div class="Adoptar-ImgP">
                 <img src="../../assets/img/AdoptarPerro1.jpg" alt="Imagen 1">
-                <h3>Elige tu mascota</h3>
+                <!-- PIPE -->
+                <h3>{{'elige' | titlecase }} tu mascota</h3>
                 <p>Visita algun refugio o algun centro de animales. 
                   Investiga las razas y tamaños para encontrar la mascota que mejor se adapte a tu estilo de vida. 
                   Conoce a los animales disponibles y decide que mascota te acompañara en tu vida.</p>
               </div>
               <div class="Adoptar-ImgP">
                 <img src="../../assets/img/Adopcion2.jpg" alt="Imagen 2">
-                <h3>Proceso de adopción</h3>
+                <!-- PIPE -->
+                <h3>{{'proceso' | titlecase }} de adopción</h3>
                 <p>Llena  el formulario de solicitud y realiza el pago de una tarifa que cubre los 
                   costos de esterilización, vacunas y microchip. Asiste a una entrevista donde demostrarás tu compromiso y 
                   capacidad para brindar un hogar adecuado a tu nueva mascota.</p>
               </div>
               <div class="Adoptar-ImgP">
                 <img src="../../assets/img/PerroCasa3.png" alt="Imagen 3">
-                <h3>Llevalo a su hogar</h3>
+                <!-- PIPE -->
+                <h3>{{'llevalo' | titlecase }} a su hogar</h3>
                 <p>Adquiere los suministros básicos como comida, platos, cama y juguetes para recibir a tu nueva mascota.
                   Asegura tu casa para evitar escapes o accidentes y crea un espacio cómodo y seguro donde 
                   tu mascota pueda sentirse feliz y protegida.</p>
               </div>
               <div class="Adoptar-ImgP">
                 <img src="../../assets/img/PerroFeliz4.jpg" alt="Imagen 4">
-                <h3>Bienvenido a casa</h3>
+                <!-- PIPE -->
+                <h3>{{'Bienvenido' | uppercase }} a casa</h3>
                 <p>Bríndale atención, ejercicio y entrenamientos adecuados para construir una fuerte conexión y una vida 
                   llena de momentos felices. Disfruta de la compañía 
                   incondicional y el cariño de tu nueva mascota</p>
@@ -79,7 +83,7 @@
           </div>
           <hr>
 
-          <!-- Video de pipe proteccion -->
+          <!-- Video de pipe proteccion (PERSONALIZADO)-->
 
           <h2>Lo importante que es adoptar</h2>
 
@@ -103,8 +107,8 @@
             <img src="../../assets/img/CaraPerro.png" alt="">
             <img src="../../assets/img/CaraGato.png" alt="">
           </div>
-          <!-- Boton para adoptar -->
-          <button class="btnAdoptar"><a (click)="redirectToAdopta()"><h1>¡Adopta Ya!</h1></a></button>
+          <!-- Boton para adoptar -->                                      <!-- PIPE -->
+          <button class="btnAdoptar"><a (click)="redirectToAdopta()"><h1>{{'¡Adopta Ya!' | uppercase }}</h1></a></button>
           <hr>
           <app-comentario></app-comentario>
         </section>
