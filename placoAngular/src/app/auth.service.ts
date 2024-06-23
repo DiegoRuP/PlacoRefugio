@@ -15,7 +15,6 @@ export class AuthService {
   currentUserSig = signal<UserInterface | null | undefined>(undefined);
   private recaptchaVerifier?:RecaptchaVerifier;
   private userCrenedtial?:UserCredential;
-  logueado: boolean=false;
 
   //registrar usuario
   registrar(correo: string, usuario: string, contra: string, telefono: string): Observable<void> {
@@ -40,7 +39,6 @@ export class AuthService {
     const promise = signInWithEmailAndPassword(this.firebaseAuth, correo, contra)
     .then(() => {});    
     return from(promise);
-    this.logueado=true;
   }
 
   logout(): Observable<void>{
@@ -79,7 +77,7 @@ export class AuthService {
     //si pasan 4 minutos el código expira
     setTimeout(()=>{
       sessionStorage.removeItem('verificationId');
-      alert("Tiempo excedido!")
+      // alert("Tiempo excedido!")
       callback(false);
     },240000)
   }

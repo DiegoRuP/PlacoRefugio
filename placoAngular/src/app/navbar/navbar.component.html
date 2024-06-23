@@ -10,8 +10,9 @@
 
             <!-- mostrar estas opciones solo si está logueado -->
             <ng-template #loggedIn>
+
               <li class="nav-item active">
-                <a class="nav-link"><i class="fa-solid fa-door-open" style="color: #000000;" (click)="logout()"></i>Cerrar sesión</a>
+                <a class="nav-link"><i class="fa-solid fa-door-open" style="color: #000000;" (click)="logout()"></i>{{ authService.currentUserSig()?.usuario }}</a>
               </li>
 
               <li class="nav-item active">

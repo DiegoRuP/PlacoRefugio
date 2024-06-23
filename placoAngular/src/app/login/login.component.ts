@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -22,11 +23,29 @@ export class LoginComponent {
     contra: ['', Validators.required],
   });
 
+  //validar login
   onSubmit(): void {
-    alert("Bienvenido");
     const rawForm = this.form.getRawValue();
-    this.authService.login(rawForm.correo, rawForm.contra)
-      .subscribe(() => this.router.navigateByUrl('/home'));
+    this.authService.login(rawForm.correo, rawForm.contra).subscribe({
+      next: () => {
+        Swal.fire({
+          title: 'Bienvenido',
+          text: 'Inicio de sesión exitoso',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          this.router.navigateByUrl('/home');
+        });
+      },
+      error: (err) => {
+        Swal.fire({
+          title: 'Error',
+          text: 'Contraseña y/o correo incorrectos',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      }
+    });
   }
 
   goToRegistro() {
