@@ -27,6 +27,11 @@
                 <a class="nav-link" [routerLink]="['/adopta']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Adopta</a>
               </li>
 
+              <!-- mostrar esta opcion solo si es admin -->
+              <li class="nav-item active" *ngIf="esAdmin">
+                <a class="nav-link" [routerLink]="['/reporte']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Reportes</a>
+              </li>
+
               <li class="nav-item active">
                 <a class="nav-link" [routerLink]="['/about']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Nosotros</a>
               </li>
@@ -44,10 +49,6 @@
 
             <li class="nav-item active">
                 <a class="nav-link" [routerLink]="['/galeria']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Galeria</a>
-            </li>
-
-            <li class="nav-item active">
-                <a class="nav-link" [routerLink]="['/reporte']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Reportes</a>
             </li>
 
             <li class="nav-item active">

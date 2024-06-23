@@ -3,6 +3,7 @@ import { Auth, PhoneAuthProvider, RecaptchaVerifier, UserCredential, createUserW
 import { Observable, from } from 'rxjs';
 import { Firestore, doc, setDoc, collection, getDocs, QuerySnapshot, collectionData } from '@angular/fire/firestore';
 import { UserInterface } from './user.interface';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -51,61 +52,90 @@ export class AuthService {
     return collectionData(usersCollection, { idField: 'id' }) as Observable<UserInterface[]>;
   }
 
-  //iniciar sesion con telefono
-  sendSMS(phone:string,buttonCaptcha:HTMLButtonElement,callback:(result:boolean)=>void){
+  // iniciar sesión con teléfono
+  sendSMS(phone: string, buttonCaptcha: HTMLButtonElement, callback: (result: boolean) => void) {
 
-    //verificacion del captcha
-    this.recaptchaVerifier = new RecaptchaVerifier(this.firebaseAuth, buttonCaptcha, {'size': 'invisible'});
-    this.recaptchaVerifier.verify().then((widgetId)=>{
-      if (widgetId!=null){
+    // verificación del captcha
+    this.recaptchaVerifier = new RecaptchaVerifier(this.firebaseAuth, buttonCaptcha, { 'size': 'invisible' });
+    this.recaptchaVerifier.verify().then((widgetId) => {
+      if (widgetId != null) {
 
-        //enviar código y guardarlo en sessionstorage
-        signInWithPhoneNumber(this.firebaseAuth,phone,this.recaptchaVerifier!).then((result)=>{
-          sessionStorage.setItem('verificationId',JSON.stringify(result.verificationId));
-          alert("Código enviado")
+        // enviar código y guardarlo en sessionStorage
+        signInWithPhoneNumber(this.firebaseAuth, phone, this.recaptchaVerifier!).then((result) => {
+          sessionStorage.setItem('verificationId', JSON.stringify(result.verificationId));
+          Swal.fire({
+            title: 'Código enviado',
+            text: 'Se ha enviado el código de verificación a tu teléfono.',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          });
           callback(true);
-        }).catch((error)=>{
-          alert("Error al mandar el código: "+error.message);
+        }).catch((error) => {
+          Swal.fire({
+            title: 'Error',
+            text: 'Error al mandar el código: ',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
           callback(false);
         });
-      }else{
-        alert("Error al verificar el captcha")
+      } else {
+        Swal.fire({
+          title: 'Error',
+          text: 'Error al verificar el captcha',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
         callback(false);
       }
     });
 
-    //si pasan 4 minutos el código expira
-    setTimeout(()=>{
+    // si pasan 4 minutos el código expira
+    setTimeout(() => {
       sessionStorage.removeItem('verificationId');
-      // alert("Tiempo excedido!")
       callback(false);
-    },240000)
+    }, 240000)
   }
 
-  //confirmacion del código
-  phoneConfirmationCode(code:string,callback:(result:boolean)=>void){
-    //declaracion y comprobacion de credenciales
-    let credentials=JSON.parse(sessionStorage.getItem('verificationId')||'{}');
-    if(credentials=='{}'){
-      alert("Error al verificar el codigo!");
+  // confirmación del código
+  phoneConfirmationCode(code: string, callback: (result: boolean) => void) {
+    // declaración y comprobación de credenciales
+    let credentials = JSON.parse(sessionStorage.getItem('verificationId') || '{}');
+    if (credentials == '{}') {
+      Swal.fire({
+        title: 'Error',
+        text: 'Error al verificar el código!',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
       callback(false);
       return;
     }
 
-    //si las credenciales son correctas, iniciar sesión
-    let phoneCrenedtial=PhoneAuthProvider.credential(credentials,code);
-    console.log("Codigo: "+code+" credentials: "+credentials)
-    signInWithCredential(this.firebaseAuth,phoneCrenedtial).then((userCredential)=>{
-    this.userCrenedtial=userCredential;
-      alert("Bienvenido");
+    // si las credenciales son correctas, iniciar sesión
+    let phoneCredential = PhoneAuthProvider.credential(credentials, code);
+    console.log("Código: " + code + " credenciales: " + credentials);
+    signInWithCredential(this.firebaseAuth, phoneCredential).then((userCredential) => {
+      this.userCrenedtial = userCredential;
+      Swal.fire({
+        title: 'Bienvenido',
+        text: 'Inicio de sesión exitoso',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
       callback(true);
       return;
-    }).catch((error)=>{
-      alert("Error al verificar el codigo: "+error.message);
+    }).catch((error) => {
+      Swal.fire({
+        title: 'Error',
+        text: 'Error al verificar el código: ' + error.message,
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
       callback(false);
       return;
     });
   }
-
+  
   constructor() { }
 }

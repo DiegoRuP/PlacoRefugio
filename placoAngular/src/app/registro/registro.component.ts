@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -25,9 +26,26 @@ export class RegistroComponent {
   });
 
   onSubmit(): void {
-    alert("Usuario registrado");
     const rawForm = this.form.getRawValue();
-    this.authService.registrar(rawForm.correo, rawForm.usuario, rawForm.contra, rawForm.telefono)
-      .subscribe(() => this.router.navigateByUrl('/home'));
+    this.authService.registrar(rawForm.correo, rawForm.usuario, rawForm.contra, rawForm.telefono).subscribe({
+      next: () => {
+        Swal.fire({
+          title: 'Usuario registrado',
+          text: 'El registro fue exitoso.',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          this.router.navigateByUrl('/home');
+        });
+      },
+      error: (err) => {
+        Swal.fire({
+          title: 'Error',
+          text: 'Error al registrar',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      }
+    });
   }
 }
