@@ -1,0 +1,29 @@
+<br><br>
+<h1>Registro</h1>
+<br>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+        <input type="text" formControlName="usuario" placeholder="Usuario">
+        <br><br>
+    </div>
+
+    <div>
+        <input type="text" formControlName="correo" placeholder="Correo">
+        <br><br>
+    </div>
+
+    <div>
+        <input type="password" formControlName="contra" placeholder="Contraseña">
+        <br><br>
+    </div>
+
+    <div>
+        <input type="text" formControlName="telefono" placeholder="Número de teléfono">
+        <br><br>
+    </div>
+
+    <div>
+        <button type="submit">Registrar</button>
+    </div>
+</form>

@@ -6,7 +6,9 @@ import { AboutComponent } from './about/about.component';
 import { ReporteComponent } from './reporte/reporte.component';
 import { UnaMascotaComponent } from './una-mascota/una-mascota.component';
 import { SearchComponent } from './search/search.component';
-
+import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
+import { LogintelComponent } from './logintel/logintel.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -17,4 +19,7 @@ export const routes: Routes = [
     {path: 'reporte', component: ReporteComponent},
     {path: 'mascota/:id', component: UnaMascotaComponent},
     {path: 'buscador/:razam', component: SearchComponent},
+    {path: 'login', component: LoginComponent},
+    {path: 'registro', component: RegistroComponent},
+    {path: 'login-tel', component: LogintelComponent},
 ];

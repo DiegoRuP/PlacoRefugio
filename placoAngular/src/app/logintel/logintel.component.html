@@ -1,0 +1,29 @@
+<br><br>
+<h1>Iniciar sesión con teléfono</h1>
+<br>
+
+<div id="formulario">
+    <div>
+        <input type="text" placeholder="Teléfono" [(ngModel)]="phone">
+        <br><br>
+    </div>
+
+    <div>
+        <input [readOnly]="!validado" type="text" placeholder="Código" [(ngModel)]="codigo">
+        <br><br>
+    </div>
+
+    <div>
+        @if (!validado) {
+            <button #captcha type="submit" (click)="onSubmit(captcha)">Enviar código</button>
+            <br><br>
+        }@else {
+            <button (click)="confirmarSMS()">Iniciar sesión</button>
+        }
+    </div>
+
+    <div>
+        <p>¿No tienes cuenta? regístrate ahora!</p>
+        <button (click)="goToRegistro()">Crear cuenta</button>
+    </div>
+</div>

@@ -6,26 +6,58 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+            <!-- mostrar estas opciones solo si está logueado -->
+            <ng-template #loggedIn>
+              <li class="nav-item active">
+                <a class="nav-link"><i class="fa-solid fa-door-open" style="color: #000000;" (click)="logout()"></i>Cerrar sesión</a>
+              </li>
+
+              <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/home']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Inicio</a>
+              </li>
+
+              <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/galeria']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Galeria</a>
+              </li>
+
+              <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/adopta']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Adopta</a>
+              </li>
+
+              <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/about']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Nosotros</a>
+              </li>
+            </ng-template>
+
+            <!-- mostrar estas opciones si no está logueado -->
+          <ng-container *ngIf="authService.currentUserSig() == null; else loggedIn">
+            <li class="nav-item active">
+               <a class="nav-link" [routerLink]="['/login']"><i class="fa-solid fa-user" style="color: #000000;"></i>Iniciar sesión</a>
+            </li>
+
             <li class="nav-item active">
                 <a class="nav-link" [routerLink]="['/home']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Inicio</a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" [routerLink]="['/adopta']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Adopta</a>
-            </li>
+
             <li class="nav-item active">
                 <a class="nav-link" [routerLink]="['/galeria']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Galeria</a>
             </li>
+
             <li class="nav-item active">
                 <a class="nav-link" [routerLink]="['/reporte']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Reportes</a>
             </li>
+
             <li class="nav-item active">
                 <a class="nav-link" [routerLink]="['/about']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Nosotros</a>
             </li>
+          </ng-container>
         </ul>
 
         <div id="buscoMascota" class="form-inline my-2 my-lg-0 d-flex align-items-center">
           <input type="text" class="form-control my-sm-2" placeholder="Buscar" #buscarTexto (keyup.enter)="buscarMascota(buscarTexto.value)">
-          <button class="btn btn-outline-dark my-2 my-sm-2" (click)="buscarMascota(buscarTexto.value)" type="button">Buscar</button>
+          <button class="btn btn-outline-dark my-2 my-sm-2" (click)="buscarMascota(buscarTexto.value)" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
       </div>
     </div>
