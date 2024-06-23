@@ -34,7 +34,7 @@ export class HomeComponent {
 
   QR(){
     const randomMascota = this.getRandomMascota();
-    let texto = randomMascota.descripcion+'. Datos Caracteristicos: Raza: '+randomMascota.raza+", Color: "+randomMascota.color+", Animal: "+randomMascota.animal+", Nombre: "+randomMascota.nombre+", Edad: "+randomMascota+" años.";
+    let texto = randomMascota.descripcion+'. Datos Caracteristicos: Raza: '+randomMascota.raza+", Color: "+randomMascota.color+", Animal: "+randomMascota.animal+", Nombre: "+randomMascota.nombre+", Edad: "+randomMascota.edad+" años.";
     this.ruta = randomMascota.imagen;
     this.nombre = randomMascota.nombre;
     this.qr = texto;
