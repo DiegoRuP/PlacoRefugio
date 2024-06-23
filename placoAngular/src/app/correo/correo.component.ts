@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FormControl,FormGroup,ReactiveFormsModule,Validators } from '@angular/forms';
 
+
+
 @Component({
   selector: 'app-correo',
   standalone: true,
@@ -21,12 +23,22 @@ export class CorreoComponent {
 
   resultado!: string;
 
+  //Validator personalizado para telefono
+  telefonoValidator(control: FormControl): { [s: string]: boolean } | null {
+    const valor = control.value; //Se obtiene lo que esta en el formulario
+    //En esta linea se especifica el formato o patron que queremos
+    const valido = /^((\+91-?)|0)?[0-9]{10}$/.test(valor);
+    //Retorna si es valido o no el telefono
+    return valido ? null : { telefonoInvalido: true };
+  }
+
   formularioContacto = new FormGroup({
     nombre: new FormControl('', [Validators.required, Validators.minLength(3)]),
     apellido: new FormControl('', [Validators.required, Validators.minLength(3)]),
     email: new FormControl('', [Validators.required, Validators.email]),
     mensaje: new FormControl('', [Validators.required, Validators.maxLength(500)]),
-    telefono: new FormControl('', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")])
+    //Aqui se usa el validator personalizado
+    telefono: new FormControl('', [Validators.required, this.telefonoValidator])
   });
 
   constructor(private http: HttpClient) {}
