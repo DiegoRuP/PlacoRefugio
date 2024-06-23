@@ -13,10 +13,9 @@ import { CommonModule } from '@angular/common';
 })
 
 export class NavbarComponent implements OnInit {
-
   authService = inject(AuthService);
-
   constructor(private router:Router) { }
+  esAdmin: boolean = false;
 
   buscarMascota(raza: string) {
     this.router.navigate(['/buscador', raza]);
@@ -25,13 +24,15 @@ export class NavbarComponent implements OnInit {
   //ver si el usuario esta loueado
   ngOnInit(): void {
     this.authService.user$.subscribe(user => {
-      if (user){
+      if (user) {
         this.authService.currentUserSig.set({
           correo: user.email!,
           usuario: user.displayName!,
         });
-      }else{
+        this.esAdmin = user.displayName === 'adDiego';
+      } else {
         this.authService.currentUserSig.set(null);
+        this.esAdmin = false;
       }
       console.log("HOLA CURRENT USER",this.authService.currentUserSig());
     });
@@ -41,5 +42,4 @@ export class NavbarComponent implements OnInit {
     console.log('Hasta luego');
     this.authService.logout();
   }
-
 }
