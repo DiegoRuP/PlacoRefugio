@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { RouterModule, Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';
@@ -7,21 +7,28 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule, FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrls: ['./navbar.component.css']
 })
 
 export class NavbarComponent implements OnInit {
   authService = inject(AuthService);
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
   esAdmin: boolean = false;
+  
 
   buscarMascota(raza: string) {
     this.router.navigate(['/buscador', raza]);
   }
 
-  //ver si el usuario esta loueado
+  closeMenu() {
+    const navbarCollapse = document.querySelector('.navbar-collapse') as HTMLElement;
+    if (navbarCollapse.classList.contains('show')) {
+      navbarCollapse.classList.remove('show');
+    }
+  }
+
   ngOnInit(): void {
     this.authService.user$.subscribe(user => {
       if (user) {
@@ -34,12 +41,13 @@ export class NavbarComponent implements OnInit {
         this.authService.currentUserSig.set(null);
         this.esAdmin = false;
       }
-      console.log("HOLA CURRENT USER",this.authService.currentUserSig());
+      console.log("HOLA CURRENT USER", this.authService.currentUserSig());
     });
   }
 
-  logout(): void{
+  logout(): void {
     console.log('Hasta luego');
     this.authService.logout();
+    this.closeMenu();  // Cierra el menú al hacer logout
   }
 }

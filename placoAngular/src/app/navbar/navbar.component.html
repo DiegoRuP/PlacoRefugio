@@ -1,82 +1,65 @@
-<nav class="navbar navbar-expand-lg sticky-top" data-bs-theme="light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="../../assets/img/logo.png"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-
-            <!-- mostrar estas opciones solo si está logueado -->
-            <ng-template #loggedIn>
-
-              <li class="nav-item active">
-                <a class="nav-link"><i class="fa-solid fa-user" style="color: #000000;"></i>{{ authService.currentUserSig()?.usuario }}</a>
-              </li>
-
-              <li class="nav-item active">
-                <a class="nav-link" (click)="logout()"><i class="fa-solid fa-door-open" style="color: #000000;" ></i>Cerrar sesión</a>
-              </li>
-
-              <li class="nav-item active">
-                <a class="nav-link" [routerLink]="['/home']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Inicio</a>
-              </li>
-
-              <li class="nav-item active">
-                <a class="nav-link" [routerLink]="['/galeria']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Galeria</a>
-              </li>
-
-              <li class="nav-item active">
-                <a class="nav-link" [routerLink]="['/adopta']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Adopta</a>
-              </li>
-
-              <!-- mostrar esta opcion solo si es admin -->
-              <li class="nav-item active" *ngIf="esAdmin">
-                <a class="nav-link" [routerLink]="['/reporte']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Reportes</a>
-              </li>
-
-              <li class="nav-item active">
-                <a class="nav-link" [routerLink]="['/about']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Nosotros</a>
-              </li>
-
-              <li class="nav-item active">
-                <a class="nav-link" [routerLink]="['/correo']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Contactanos</a>
-              </li>
-
-              <li class="nav-item active">
-                <a class="nav-link" [routerLink]="['/misCitas']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Mis Citas</a>
-              </li>
-
-            </ng-template>
-
-            <!-- mostrar estas opciones si no está logueado -->
-          <ng-container *ngIf="authService.currentUserSig() == null; else loggedIn">
-            <li class="nav-item active">
-               <a class="nav-link" [routerLink]="['/login']"><i class="fa-solid fa-user" style="color: #000000;"></i>Iniciar sesión</a>
-            </li>
-
-            <li class="nav-item active">
-                <a class="nav-link" [routerLink]="['/home']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Inicio</a>
-            </li>
-
-            <li class="nav-item active">
-                <a class="nav-link" [routerLink]="['/galeria']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Galeria</a>
-            </li>
-
-            <li class="nav-item active">
-                <a class="nav-link" [routerLink]="['/about']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Nosotros</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" [routerLink]="['/correo']"><i class="fa-solid fa-paw fa-lg" style="color: #000000;"></i>Contactanos</a>
-            </li>
-          </ng-container>
-        </ul>
-
-        <div id="buscoMascota" class="form-inline my-2 my-lg-0 d-flex align-items-center">
-          <input type="text" class="form-control my-sm-2" placeholder="Buscar" #buscarTexto (keyup.enter)="buscarMascota(buscarTexto.value)">
-          <button class="btn btn-outline-dark my-2 my-sm-2" (click)="buscarMascota(buscarTexto.value)" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </div>
+<nav class="navbar navbar-expand-lg sticky-top" style="background-color: #DEAC80; border-bottom: dashed black 2px; margin-bottom: 40px;" data-bs-theme="light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="../../assets/img/logo.png" style="height: 4rem;"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" (click)="closeMenu()">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+    <div class="collapse navbar-collapse" id="navbarNav" >
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- mostrar estas opciones solo si está logueado -->
+        <ng-template #loggedIn>
+          <li class="nav-item active" style="margin-right: 20px;">
+            <a class="nav-link" (click)="closeMenu()"><i class="fa-solid fa-user" style="color: #000000; margin-right: 5px;"></i>{{ authService.currentUserSig()?.usuario }}</a>
+          </li>
+          <li class="nav-item active" style="margin-right: 20px;">
+            <a class="nav-link" (click)="logout(); closeMenu()"><i class="fa-solid fa-door-open" style="color: #000000; margin-right: 5px;"></i>Cerrar sesión</a>
+          </li>
+          <li class="nav-item active" style="margin-right: 20px;">
+            <a class="nav-link" [routerLink]="['/home']" (click)="closeMenu()"><i class="fa-solid fa-paw fa-lg" style="color: #000000; margin-right: 5px;"></i>Inicio</a>
+          </li>
+          <li class="nav-item active" style="margin-right: 20px;">
+            <a class="nav-link" [routerLink]="['/galeria']" (click)="closeMenu()"><i class="fa-solid fa-paw fa-lg" style="color: #000000; margin-right: 5px;"></i>Galeria</a>
+          </li>
+          <li class="nav-item active" style="margin-right: 20px;">
+            <a class="nav-link" [routerLink]="['/adopta']" (click)="closeMenu()"><i class="fa-solid fa-paw fa-lg" style="color: #000000; margin-right: 5px;"></i>Adopta</a>
+          </li>
+          <!-- mostrar esta opcion solo si es admin -->
+          <li class="nav-item active" style="margin-right: 20px;" *ngIf="esAdmin">
+            <a class="nav-link" [routerLink]="['/reporte']" (click)="closeMenu()"><i class="fa-solid fa-paw fa-lg" style="color: #000000; margin-right: 5px;"></i>Reportes</a>
+          </li>
+          <li class="nav-item active" style="margin-right: 20px;">
+            <a class="nav-link" [routerLink]="['/about']" (click)="closeMenu()"><i class="fa-solid fa-paw fa-lg" style="color: #000000; margin-right: 5px;"></i>Nosotros</a>
+          </li>
+          <li class="nav-item active" style="margin-right: 20px;">
+            <a class="nav-link" [routerLink]="['/correo']" (click)="closeMenu()"><i class="fa-solid fa-paw fa-lg" style="color: #000000; margin-right: 5px;"></i>Contactanos</a>
+          </li>
+          <li class="nav-item active" style="margin-right: 20px;">
+            <a class="nav-link" [routerLink]="['/misCitas']" (click)="closeMenu()"><i class="fa-solid fa-paw fa-lg" style="color: #000000; margin-right: 5px;"></i>Mis Citas</a>
+          </li>
+        </ng-template>
+        <!-- mostrar estas opciones si no está logueado -->
+        <ng-container *ngIf="authService.currentUserSig() == null; else loggedIn">
+          <li class="nav-item active" style="margin-right: 20px;">
+            <a class="nav-link" [routerLink]="['/login']" (click)="closeMenu()"><i class="fa-solid fa-user" style="color: #000000; margin-right: 5px;"></i>Iniciar sesión</a>
+          </li>
+          <li class="nav-item active" style="margin-right: 20px;">
+            <a class="nav-link" [routerLink]="['/home']" (click)="closeMenu()"><i class="fa-solid fa-paw fa-lg" style="color: #000000; margin-right: 5px;"></i>Inicio</a>
+          </li>
+          <li class="nav-item active" style="margin-right: 20px;">
+            <a class="nav-link" [routerLink]="['/galeria']" (click)="closeMenu()"><i class="fa-solid fa-paw fa-lg" style="color: #000000; margin-right: 5px;"></i>Galeria</a>
+          </li>
+          <li class="nav-item active" style="margin-right: 20px;">
+            <a class="nav-link" [routerLink]="['/about']" (click)="closeMenu()"><i class="fa-solid fa-paw fa-lg" style="color: #000000; margin-right: 5px;"></i>Nosotros</a>
+          </li>
+          <li class="nav-item active" style="margin-right: 20px;">
+            <a class="nav-link" [routerLink]="['/correo']" (click)="closeMenu()"><i class="fa-solid fa-paw fa-lg" style="color: #000000; margin-right: 5px;"></i>Contactanos</a>
+          </li>
+        </ng-container>
+      </ul>
+      <div id="buscoMascota" class="form-inline my-2 my-lg-0 d-flex align-items-center">
+        <input type="text" class="form-control my-sm-2" placeholder="Buscar" #buscarTexto (keyup.enter)="buscarMascota(buscarTexto.value)">
+        <button class="btn btn-outline-dark my-2 my-sm-2" (click)="buscarMascota(buscarTexto.value)" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
       </div>
     </div>
+  </div>
 </nav>

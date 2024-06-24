@@ -216,3 +216,12 @@ iframe{
   border-radius: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+@media (max-width: 1000px) {
+  .horizontal-layout {
+    display: flex;
+    flex-direction: column; /* Asegura la disposición horizontal */
+    justify-content: space-around;
+    align-items: center;
+  }
+}
