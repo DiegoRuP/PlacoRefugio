@@ -3,6 +3,7 @@ import { Auth, PhoneAuthProvider, RecaptchaVerifier, UserCredential, createUserW
 import { Observable, from } from 'rxjs';
 import { Firestore, doc, setDoc, collection, getDocs, QuerySnapshot, collectionData } from '@angular/fire/firestore';
 import { UserInterface } from './user.interface';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -14,23 +15,26 @@ export class AuthService {
   user$ = user(this.firebaseAuth);
   currentUserSig = signal<UserInterface | null | undefined>(undefined);
   private recaptchaVerifier?:RecaptchaVerifier;
-  private userCrenedtial?:UserCredential;
+  private userCredential?:UserCredential;
 
   //registrar usuario
   registrar(correo: string, usuario: string, contra: string, telefono: string): Observable<void> {
-    const promise = createUserWithEmailAndPassword(this.firebaseAuth, correo, contra)
-      .then(response => {
-        return updateProfile(response.user, { displayName: usuario }).then(() => {
-          //guardar los datos en firestore
-          const userDocRef = doc(this.firestore, `users/${response.user.uid}`);
-          return setDoc(userDocRef, {
-            uid: response.user.uid,
-            email: correo,
-            displayName: usuario,
-            telefono: telefono
-          });
+  const promise = createUserWithEmailAndPassword(this.firebaseAuth, correo, contra)
+    .then(response => {
+      return updateProfile(response.user, { displayName: usuario }).then(() => {
+        //guardar los datos en firestore
+        const userDocRef = doc(this.firestore, `users/${response.user.uid}`);
+        return setDoc(userDocRef, {
+          uid: response.user.uid,
+          email: correo,
+          displayName: usuario,
+          telefono: telefono
+        }).then(() => {
+          //cerrar sesión después del registro
+          return signOut(this.firebaseAuth);
         });
       });
+    });
     return from(promise);
   }
 
@@ -52,58 +56,89 @@ export class AuthService {
   }
 
   //iniciar sesion con telefono
-  sendSMS(phone:string,buttonCaptcha:HTMLButtonElement,callback:(result:boolean)=>void){
-
-    //verificacion del captcha
-    this.recaptchaVerifier = new RecaptchaVerifier(this.firebaseAuth, buttonCaptcha, {'size': 'invisible'});
-    this.recaptchaVerifier.verify().then((widgetId)=>{
-      if (widgetId!=null){
-
-        //enviar código y guardarlo en sessionstorage
-        signInWithPhoneNumber(this.firebaseAuth,phone,this.recaptchaVerifier!).then((result)=>{
-          sessionStorage.setItem('verificationId',JSON.stringify(result.verificationId));
-          alert("Código enviado")
+  sendSMS(phone: string, buttonCaptcha: HTMLButtonElement, callback: (result: boolean) => void) {
+    //verificación del captcha
+    this.recaptchaVerifier = new RecaptchaVerifier(this.firebaseAuth, buttonCaptcha, { 'size': 'invisible' });
+    this.recaptchaVerifier.verify().then((widgetId) => {
+      if (widgetId != null) {
+        //enviar código y guardarlo en sessionStorage
+        signInWithPhoneNumber(this.firebaseAuth, phone, this.recaptchaVerifier!).then((result) => {
+          sessionStorage.setItem('verificationId', JSON.stringify(result.verificationId));
+          Swal.fire({
+            title: 'Código enviado',
+            text: 'Se ha enviado el código de verificación a tu teléfono.',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          });
           callback(true);
-        }).catch((error)=>{
-          alert("Error al mandar el código: "+error.message);
+        }).catch((error) => {
+          Swal.fire({
+            title: 'Error',
+            text: 'Error al mandar el código: ',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
           callback(false);
         });
-      }else{
-        alert("Error al verificar el captcha")
+      } else {
+        Swal.fire({
+          title: 'Error',
+          text: 'Error al verificar el captcha',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
         callback(false);
       }
     });
-
+  
     //si pasan 4 minutos el código expira
-    setTimeout(()=>{
+    setTimeout(() => {
       sessionStorage.removeItem('verificationId');
-      // alert("Tiempo excedido!")
+      // Swal.fire({
+      //   title: 'Tiempo excedido',
+      //   text: 'El código de verificación ha expirado.',
+      //   icon: 'warning',
+      //   confirmButtonText: 'OK'
+      // });
       callback(false);
-    },240000)
+    }, 240000);
   }
 
   //confirmacion del código
-  phoneConfirmationCode(code:string,callback:(result:boolean)=>void){
-    //declaracion y comprobacion de credenciales
-    let credentials=JSON.parse(sessionStorage.getItem('verificationId')||'{}');
-    if(credentials=='{}'){
-      alert("Error al verificar el codigo!");
+  phoneConfirmationCode(code: string, callback: (result: boolean) => void) {
+    //declaración y comprobación de credenciales
+    let credentials = JSON.parse(sessionStorage.getItem('verificationId') || '{}');
+    if (credentials == '{}') {
+      Swal.fire({
+        title: 'Error',
+        text: 'Error al verificar el código',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
       callback(false);
       return;
     }
-
+  
     //si las credenciales son correctas, iniciar sesión
-    let phoneCrenedtial=PhoneAuthProvider.credential(credentials,code);
-    console.log("Codigo: "+code+" credentials: "+credentials)
-    signInWithCredential(this.firebaseAuth,phoneCrenedtial).then((userCredential)=>{
-    this.userCrenedtial=userCredential;
-      alert("Bienvenido");
+    let phoneCredential = PhoneAuthProvider.credential(credentials, code);
+    console.log("Código: " + code + " credenciales: " + credentials);
+    signInWithCredential(this.firebaseAuth, phoneCredential).then((userCredential) => {
+      this.userCredential = userCredential;
+      Swal.fire({
+        title: 'Bienvenido',
+        text: 'Inicio de sesión exitoso',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
       callback(true);
-      return;
-    }).catch((error)=>{
-      alert("Error al verificar el codigo: "+error.message);
+    }).catch((error) => {
+      Swal.fire({
+        title: 'Error',
+        text: 'Error al verificar el código: ',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
       callback(false);
-      return;
     });
   }
 

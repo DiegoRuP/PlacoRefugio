@@ -27,14 +27,13 @@ export class NavbarComponent implements OnInit {
       if (user) {
         this.authService.currentUserSig.set({
           correo: user.email!,
-          usuario: user.displayName!,
+          usuario: user.displayName!
         });
         this.esAdmin = user.displayName === 'adDiego';
       } else {
         this.authService.currentUserSig.set(null);
         this.esAdmin = false;
       }
-      console.log("HOLA CURRENT USER",this.authService.currentUserSig());
     });
   }
 
@@ -43,3 +42,4 @@ export class NavbarComponent implements OnInit {
     this.authService.logout();
   }
 }
+
