@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ObtencionNodeJSService {
-  private bd = 'http://localhost:3000/api/bd';
+  private bd = 'http://167.71.175.189:3000/api/bd';
 
   constructor(private http: HttpClient) { }
 

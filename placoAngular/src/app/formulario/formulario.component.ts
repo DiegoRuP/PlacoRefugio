@@ -92,7 +92,7 @@ export class FormularioComponent implements OnInit {
       this.mostrarExito = false;
     }, 3000);
 
-    this.http.post('http://localhost:3000/agendar-cita', nuevaCita).subscribe(
+    this.http.post('http://167.71.175.189:3000/agendar-cita', nuevaCita).subscribe(
       (response: any) => {
         addDoc(citasRef, nuevaCita);
         Swal.fire({
