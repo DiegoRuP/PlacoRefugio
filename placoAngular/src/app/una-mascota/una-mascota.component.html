@@ -1,26 +1,51 @@
-<div class="containerMascota">
-    <h1 class="animate__animated animate__bounce">{{mascota.raza}}</h1>
+<div class="dropdown nav-item item-float">
+    <a class="nav-link nav-link dropdown-toggle">
+      <i class="fa-solid fa-universal-access fa-xl"></i>
+    </a>
+    <div class="dropdown-content" [style.fontSize.px]="fontSize">
+      <a class="dropdown-item nav-style" (click)="readContent()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+        Leer texto <i class="fa-solid fa-play fa-lg pl-3"></i>
+       </a>
+       <a class="navbar-item nav-style" (click)="increaseFontSize()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+         Aumentar texto <i class="fa-solid fa-plus fa-lg pl-3"></i>
+       </a>
+       <a class="navbar-item nav-style" (click)="decreaseFontSize()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+         Decrementar texto <i class="fa-solid fa-minus fa-lg pl-3"></i>
+       </a>
+       <a class="navbar-item nav-style" (click)="increasePadding()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+         Aumentar espaciado <i class="fa-solid fa-boxes-stacked fa-lg pl-3"></i>
+       </a>
+       <a class="navbar-item nav-style" (click)="toggleContrast()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+         Cambiar contraste <i class="fa-solid fa-droplet fa-lg pl-3"></i>
+       </a>
+       <a class="navbar-item nav-style" (click)="toggleDyslexicFont()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+         Tipografia para dislexicos <i class="fa-solid fa-font fa-lg pl-3"></i>
+       </a>
+    </div>
+</div>
+<div class="containerMascota" id="content" [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'">
+    <h1 class="animate__animated animate__bounce" id="content" [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'">{{mascota.raza}}</h1>
     <hr>
     <div class="row animated fadeIn fast">
-        <div class="col md-4 text-center">
+        <div class="col md-4 text-center" [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'">
             <img width="500px" src="{{mascota.imagen}}" alt="" class="img-fluid">
             <br><br>
-            <a [routerLink]="['/adopta']" class="btn btn-outline-dark btn-block">Regresar</a>
+            <a [routerLink]="['/adopta']" class="btn btn-outline-dark btn-block" [class]="isContrastMode ? 'dark-contrast' : ''">Regresar</a>
         </div>
-        <div class="col md-8">
-            <h3>{{mascota.nombre}}</h3>
+        <div class="col md-8" [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+            <h3 [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'">{{mascota.nombre}}</h3>
             <hr>
-            <p>
+            <p [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'">
                 {{mascota.descripcion}}
             </p>
             <hr>
-            <p>
+            <p [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'">
                 <b>Edad:</b> {{mascota.edad}}
             </p>
-            <p>
+            <p [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'">
                 <b>Color:</b> {{mascota.color}}
             </p>
-            <p>
+            <p [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'">
                 <b>Tiempo:</b> {{mascota.tiempo}} meses
             </p>
             <hr>

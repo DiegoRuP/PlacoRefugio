@@ -1,27 +1,55 @@
-<div class="container">
-    <h1 id="tituloLogin">Iniciar sesión</h1>
+<div class="dropdown nav-item item-float">
+    <a class="nav-link nav-link dropdown-toggle">
+      <i class="fa-solid fa-universal-access fa-xl"></i>
+    </a>
+    <div class="dropdown-content" [style.fontSize.px]="fontSize">
+      <a class="dropdown-item nav-style" (click)="readContent()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+        Leer texto <i class="fa-solid fa-play fa-lg pl-3"></i>
+       </a>
+       <a class="navbar-item nav-style" (click)="increaseFontSize()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+         Aumentar texto <i class="fa-solid fa-plus fa-lg pl-3"></i>
+       </a>
+       <a class="navbar-item nav-style" (click)="decreaseFontSize()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+         Decrementar texto <i class="fa-solid fa-minus fa-lg pl-3"></i>
+       </a>
+       <a class="navbar-item nav-style" (click)="increasePadding()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+         Aumentar espaciado <i class="fa-solid fa-boxes-stacked fa-lg pl-3"></i>
+       </a>
+       <a class="navbar-item nav-style" (click)="toggleContrast()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+         Cambiar contraste <i class="fa-solid fa-droplet fa-lg pl-3"></i>
+       </a>
+       <a class="navbar-item nav-style" (click)="toggleDyslexicFont()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+         Tipografia para dislexicos <i class="fa-solid fa-font fa-lg pl-3"></i>
+       </a>
+    </div>
+  </div>
+<div class="container" id="content">
+    <div [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : ''">
+        <h1 id="tituloLogin">Iniciar sesión</h1>
+    </div>
+    
     <hr>
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : ''">
+        <div [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : ''">
             <input type="text" formControlName="correo" placeholder="Correo">
             <br><br>
         </div>
 
-        <div>
+        <div [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : ''">
             <input type="password" formControlName="contra" placeholder="Contraseña">
             <br><br>
         </div>
 
-        <div>
-            <button type="submit">Iniciar sesión</button>
+        <div [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : ''">
+            <button type="submit" [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class]="isContrastMode ? 'dark-contrast' : ''">Iniciar sesión</button>
             <br><br>
-            <button type="button" (click)="goToLoginTel()">Iniciar sesión con teléfono</button>
+            <button type="button" (click)="goToLoginTel()" [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class]="isContrastMode ? 'dark-contrast' : ''">Iniciar sesión con teléfono</button>
         </div>
         <hr>
-        <div>
+        <div [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : ''">
             <p>¿No tienes cuenta? regístrate ahora!</p>
-            <button type="button" (click)="goToRegistro()" >Crear cuenta</button>
+            <button type="button" (click)="goToRegistro()" [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class]="isContrastMode ? 'dark-contrast' : ''">Crear cuenta</button>
         </div>
     </form>
 

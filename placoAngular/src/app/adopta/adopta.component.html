@@ -1,20 +1,43 @@
-<div class="containerAdopta">
-    <h1 class="tituloAdopta">Adopta a tu nuevo amigo</h1>
+<div class="dropdown nav-item item-float">
+    <a class="nav-link nav-link dropdown-toggle">
+      <i class="fa-solid fa-universal-access fa-xl"></i>
+    </a>
+    <div class="dropdown-content" [style.fontSize.px]="fontSize">
+      <a class="dropdown-item nav-style" (click)="readContent()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+        Leer texto <i class="fa-solid fa-play fa-lg pl-3"></i>
+       </a>
+       <a class="navbar-item nav-style" (click)="increaseFontSize()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+         Aumentar texto <i class="fa-solid fa-plus fa-lg pl-3"></i>
+       </a>
+       <a class="navbar-item nav-style" (click)="decreaseFontSize()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+         Decrementar texto <i class="fa-solid fa-minus fa-lg pl-3"></i>
+       </a>
+       <a class="navbar-item nav-style" (click)="increasePadding()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+         Aumentar espaciado <i class="fa-solid fa-boxes-stacked fa-lg pl-3"></i>
+       </a>
+       <a class="navbar-item nav-style" (click)="toggleContrast()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+         Cambiar contraste <i class="fa-solid fa-droplet fa-lg pl-3"></i>
+       </a>
+       <a class="navbar-item nav-style" (click)="toggleDyslexicFont()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+         Tipografia para dislexicos <i class="fa-solid fa-font fa-lg pl-3"></i>
+       </a>
+    </div>
+</div>
+<div class="containerAdopta" id="content" [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'">
+    <h1 class="tituloAdopta h1" [style.fontSize.px]="fontSize" [class.dyslexic-font]="isDyslexicFont">Adopta a tu nuevo amigo</h1>
     <hr>
     <div class="card-group row row-cols-1 row-cols-lg-3 g-4">
         @for (m of adopciones; track m; let i = $index){
             <div class="col">
-                <div class="card h-100">
+                <div class="card h-100" [class]="isContrastMode ? 'dark-contrast' : ''" [style.padding.px]="paddingSize">
                     <img src="{{m.imagen}}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">{{m.nombre}}</h5>
-                        <h6 class="card-title">{{m.raza}}</h6>
-                        <p class="card-text">{{m.descripcion}}</p>
-                        <p class="card-text"><small class="text-muted">{{m.tiempo}} meses</small></p>
+                        <h5 class="card-title" [style.padding.px]="paddingSize" [style.fontSize.px]="fontSize" [class.dyslexic-font]="isDyslexicFont">{{m.nombre}}</h5>
+                        <h6 class="card-title" [style.padding.px]="paddingSize" [style.fontSize.px]="fontSize" [class.dyslexic-font]="isDyslexicFont">{{m.raza}}</h6>
+                        <p class="card-text" [style.padding.px]="paddingSize" [style.fontSize.px]="fontSize" [class.dyslexic-font]="isDyslexicFont">{{m.descripcion}}</p>
+                        <p class="card-text" [style.padding.px]="paddingSize" [style.fontSize.px]="fontSize" [class.dyslexic-font]="isDyslexicFont"><small class="text-muted">{{m.tiempo}} meses</small></p>
                     </div>
-
-                    <a [routerLink]="['/mascota',i]" class="mb-3 btn btn-outline-dark btn-block">Adoptame</a>
-
+                    <a [routerLink]="['/mascota',i]" class="mb-3 btn btn-outline-dark btn-block" [class]="isContrastMode ? 'dark-contrast' : ''">Adoptame</a>
                 </div>     
             </div>
         }
