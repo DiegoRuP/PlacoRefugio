@@ -13,4 +13,6 @@ export class ObtencionNodeJSService {
   getData():Observable<any> {
     return this.http.get<any>(this.bd);
   }
+
+  
 }
