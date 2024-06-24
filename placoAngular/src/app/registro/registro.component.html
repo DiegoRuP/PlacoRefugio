@@ -1,6 +1,7 @@
-<br><br>
-<h1>Registro</h1>
-<br>
+<div class="container">
+    <h1 id="tituloLogin">Registro</h1>
+
+    <hr>
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div>
@@ -22,8 +23,10 @@
         <input type="text" formControlName="telefono" placeholder="Número de teléfono">
         <br><br>
     </div>
+    <hr>
 
     <div>
         <button type="submit" >Registrar</button>
     </div>
 </form>
+</div>

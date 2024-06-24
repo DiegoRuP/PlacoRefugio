@@ -4,6 +4,8 @@ import { AuthService } from '../auth.service'; // Ajusta la ruta según correspo
 import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
+import { CargandoService } from '../cargando.service';
+
 
 @Component({
   selector: 'app-mis-citas',
@@ -15,10 +17,11 @@ import { CommonModule } from '@angular/common';
 export class MisCitasComponent implements OnInit {
   citas$: Observable<any[]> | undefined;
 
-  constructor(private firestore: Firestore, private authService: AuthService) {}
+  constructor(private firestore: Firestore, private authService: AuthService, private cargandoService: CargandoService) {}
 
   ngOnInit() {
     const currentUser = this.authService.currentUserSig();
+    
     if (currentUser) {
       const citasRef = collection(this.firestore, 'citas');
       const q = query(citasRef, where('correo', '==', currentUser.correo));
