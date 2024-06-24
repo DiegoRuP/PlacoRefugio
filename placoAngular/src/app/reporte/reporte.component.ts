@@ -1,14 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-interface Cita {
-  nombre: string;
-  correo: string;
-  telefono: number;
-  hora: number;
-  fecha: string;
-  nombreMascota: string;
-}
+import { Cita } from '../interfaces/citas';
+import { AdopcionesService } from '../shared/adopciones.service';
+import { CargandoService } from '../cargando.service';
+import { AdoptaMascota } from '../interfaces/adopcion';
 
 @Component({
   selector: 'app-reporte',
@@ -18,46 +13,79 @@ interface Cita {
   styleUrl: './reporte.component.css'
 })
 
-export class ReporteComponent implements OnInit{
-  citasPasadas: any[] = [];
-  citasFuturas: any[] = [];
-citas: any;
-
-  constructor() { }
-
-  ordenarCitasPorFecha(citas: Cita[]): Cita[] {
-    return citas.sort((a, b) => new Date(a.fecha).getTime() - new Date(b.fecha).getTime());
+export class ReporteComponent{
+  citas: Cita[] = [];
+  adopciones: AdoptaMascota[] = [];	
+  razaCounts: { [raza: string]: number } = {};
+  edadCounts: { [edad: string]: number } = {};
+  tiempoCounts: { [tiempo: string]: number } = {};
+  
+  constructor(private adopcionesService: AdopcionesService, private cargandoService: CargandoService) { }
+  ngOnInit(): void {
+    this.cargandoService.mostrarCarga();
+    this.recuperarDatos();
   }
-  ordenarCitasPorFecha2(citas: Cita[]): Cita[] {
-    return citas.sort((a, b) => {
-      const fechaActual = new Date().getTime();
-      const fechaA = new Date(a.fecha).getTime();
-      const fechaB = new Date(b.fecha).getTime();
 
-      const diffA = Math.abs(fechaActual - fechaA);
-      const diffB = Math.abs(fechaActual - fechaB);
+  recuperarDatos() {
+    console.log("Recuperando datos de Firebase");
+    this.adopcionesService.getCitas().subscribe({
+      next: (data: Cita[]) => {
+        this.citas = data;
+        this.cargandoService.ocultarCarga();
+      },
+      error: (error) => {
+        console.error("Error al recuperar datos", error);
+        this.cargandoService.ocultarCarga();
+      }
+    });
 
-      return diffA - diffB;
+    this.adopcionesService.getAdopciones().subscribe({
+      next: (data: AdoptaMascota[]) => {
+        this.adopciones=data;
+        this.procesoAdopciones();
+        this.cargandoService.ocultarCarga();
+      },
+      error: (error) => {
+        console.error("Error al recuperar datos", error);
+        this.cargandoService.ocultarCarga();
+      }
     });
   }
 
-  ngOnInit(): void {
-    const citasGuardadas = localStorage.getItem('citas');
-    if (citasGuardadas) {
-      const citas = JSON.parse(citasGuardadas) as Cita[]; // Asegurar que las citas se interpreten como tipo Cita
-      const fechaActual = new Date().toISOString().split('T')[0]; // Obtener la fecha actual en formato YYYY-MM-DD
+  procesoAdopciones() {
+    this.adopciones.forEach(adopcion => {
+      // Contar por raza
+      if (this.razaCounts[adopcion.raza]) {
+        this.razaCounts[adopcion.raza]++;
+      } else {
+        this.razaCounts[adopcion.raza] = 1;
+      }
 
-      citas.forEach(cita => {
-        if (cita.fecha < fechaActual) {
-          this.citasPasadas.push(cita);
-        } else {
-          this.citasFuturas.push(cita);
-        }
-      });
+      // Contar por edad
+      if (this.edadCounts[adopcion.edad]) {
+        this.edadCounts[adopcion.edad]++;
+      } else {
+        this.edadCounts[adopcion.edad] = 1;
+      }
 
-      // Ordenar las citas pasadas y futuras por fecha
-    this.citasPasadas = this.ordenarCitasPorFecha2(this.citasPasadas);
-    this.citasFuturas = this.ordenarCitasPorFecha(this.citasFuturas);
-    }
+      // Contar por tiempo
+      if (this.tiempoCounts[adopcion.tiempo]) {
+        this.tiempoCounts[adopcion.tiempo]++;
+      } else {
+        this.tiempoCounts[adopcion.tiempo] = 1;
+      }
+    });
+  }
+
+  getRazaKeys(): string[] {
+    return Object.keys(this.razaCounts);
+  }
+
+  getEdadKeys(): string[] {
+    return Object.keys(this.edadCounts);
+  }
+
+  getTiempoKeys(): string[] {
+    return Object.keys(this.tiempoCounts);
   }
 }

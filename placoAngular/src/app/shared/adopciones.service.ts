@@ -34,9 +34,9 @@ export class AdopcionesService {
     await addDoc(citasCollection, cita);
   }
 
-  getCitas(): Observable<AdoptaMascota[]> {
+  getCitas(): Observable<Cita[]> {
     const citasCollection = collection(this.firestore, 'citas');
-    return collectionData(citasCollection, { idField: 'id' }) as Observable<AdoptaMascota[]>;
+    return collectionData(citasCollection, { idField: 'id' }) as Observable<Cita[]>;
   }
 
   deleteCita(cita: Cita){
