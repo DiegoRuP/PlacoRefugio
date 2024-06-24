@@ -1,50 +1,75 @@
-<div class="containerReporte">
-    <h1>Citas Pasadas</h1>
+<div class="dropdown nav-item item-float">
+  <a class="nav-link nav-link dropdown-toggle">
+    <i class="fa-solid fa-universal-access fa-xl"></i>
+  </a>
+  <div class="dropdown-content" [style.fontSize.px]="fontSize">
+    <a class="dropdown-item nav-style" (click)="readContent()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+      Leer texto <i class="fa-solid fa-play fa-lg pl-3"></i>
+     </a>
+     <a class="navbar-item nav-style" (click)="increaseFontSize()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+       Aumentar texto <i class="fa-solid fa-plus fa-lg pl-3"></i>
+     </a>
+     <a class="navbar-item nav-style" (click)="decreaseFontSize()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+       Decrementar texto <i class="fa-solid fa-minus fa-lg pl-3"></i>
+     </a>
+     <a class="navbar-item nav-style" (click)="increasePadding()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+       Aumentar espaciado <i class="fa-solid fa-boxes-stacked fa-lg pl-3"></i>
+     </a>
+     <a class="navbar-item nav-style" (click)="toggleContrast()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+       Cambiar contraste <i class="fa-solid fa-droplet fa-lg pl-3"></i>
+     </a>
+     <a class="navbar-item nav-style" (click)="toggleDyslexicFont()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+       Tipografia para dislexicos <i class="fa-solid fa-font fa-lg pl-3"></i>
+     </a>
+  </div>
+</div>
+<div class="containerReporte" id="content" [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+    <h1 [style.fontSize.px]="fontSize" [class.dyslexic-font]="isDyslexicFont">Citas Pasadas</h1>
     <hr>
     <table>
       <thead>
         <tr>
-          <th>Nombre</th>
-          <th>Correo</th>
-          <th>Teléfono</th>
-          <th>Hora</th>
-          <th>Fecha</th>
-          <th>Mascota</th>
+          <th [class]="isContrastMode ? 'dark-contrast' :''" [style.padding.px]="paddingSize">Nombre</th>
+          <th [class]="isContrastMode ? 'dark-contrast' :''" [style.padding.px]="paddingSize">Correo</th>
+          <th [class]="isContrastMode ? 'dark-contrast' :''" [style.padding.px]="paddingSize">Teléfono</th>
+          <th [class]="isContrastMode ? 'dark-contrast' :''" [style.padding.px]="paddingSize">Hora</th>
+          <th [class]="isContrastMode ? 'dark-contrast' :''" [style.padding.px]="paddingSize">Fecha</th>
+          <th [class]="isContrastMode ? 'dark-contrast' :''" [style.padding.px]="paddingSize">Mascota</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let cita of citasPasadas">
-          <td>{{ cita.nombre }}</td>
-          <td>{{ cita.correo }}</td>
-          <td>{{ cita.telefono }}</td>
-          <td>{{ cita.hora }} : 00 hrs</td>
-          <td>{{ cita.fecha }}</td>
-          <td>{{cita.nombreMascota}}</td>
+          <td [style.padding.px]="paddingSize" [class]="isContrastMode ? 'dark-contrast' :''">{{ cita.nombre }}</td>
+          <td [style.padding.px]="paddingSize" [class]="isContrastMode ? 'dark-contrast' :''">{{ cita.correo }}</td>
+          <td [style.padding.px]="paddingSize" [class]="isContrastMode ? 'dark-contrast' :''">{{ cita.telefono }}</td>
+          <td [style.padding.px]="paddingSize" [class]="isContrastMode ? 'dark-contrast' :''">{{ cita.hora }} : 00 hrs</td>
+          <td [style.padding.px]="paddingSize" [class]="isContrastMode ? 'dark-contrast' :''">{{ cita.fecha }}</td>
+          <td [style.padding.px]="paddingSize" [class]="isContrastMode ? 'dark-contrast' :''">{{cita.nombreMascota}}</td>
         </tr>
       </tbody>
     </table>
   <br><br>
-    <h1>Citas Futuras</h1>
+    <h1 [style.fontSize.px]="fontSize" [class.dyslexic-font]="isDyslexicFont">Citas Futuras</h1>
     <hr>
     <table>
       <thead>
         <tr>
-          <th>Nombre</th>
-          <th>Correo</th>
-          <th>Teléfono</th>
-          <th>Hora</th>
-          <th>Fecha</th>
-          <th>Mascota</th>
+          <th [class]="isContrastMode ? 'dark-contrast' :''" [style.padding.px]="paddingSize">Nombre</th>
+          <th [class]="isContrastMode ? 'dark-contrast' :''" [style.padding.px]="paddingSize">Correo</th>
+          <th [class]="isContrastMode ? 'dark-contrast' :''" [style.padding.px]="paddingSize">Teléfono</th>
+          <th [class]="isContrastMode ? 'dark-contrast' :''" [style.padding.px]="paddingSize">Hora</th>
+          <th [class]="isContrastMode ? 'dark-contrast' :''" [style.padding.px]="paddingSize">Fecha</th>
+          <th [class]="isContrastMode ? 'dark-contrast' :''" [style.padding.px]="paddingSize">Mascota</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let cita of citasFuturas">
-          <td>{{ cita.nombre }}</td>
-          <td>{{ cita.correo }}</td>
-          <td>{{ cita.telefono }}</td>
-          <td>{{ cita.hora }} : 00 hrs</td>
-          <td>{{ cita.fecha }}</td>
-          <td>{{ cita.nombreMascota }}</td>
+          <td [style.padding.px]="paddingSize" [class]="isContrastMode ? 'dark-contrast' :''">{{ cita.nombre }}</td>
+          <td [style.padding.px]="paddingSize" [class]="isContrastMode ? 'dark-contrast' :''">{{ cita.correo }}</td>
+          <td [style.padding.px]="paddingSize" [class]="isContrastMode ? 'dark-contrast' :''">{{ cita.telefono }}</td>
+          <td [style.padding.px]="paddingSize" [class]="isContrastMode ? 'dark-contrast' :''">{{ cita.hora }} : 00 hrs</td>
+          <td [style.padding.px]="paddingSize" [class]="isContrastMode ? 'dark-contrast' :''">{{ cita.fecha }}</td>
+          <td [style.padding.px]="paddingSize" [class]="isContrastMode ? 'dark-contrast' :''">{{ cita.nombreMascota }}</td>
         </tr>
       </tbody>
     </table>

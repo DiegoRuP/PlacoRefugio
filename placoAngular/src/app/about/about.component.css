@@ -94,7 +94,7 @@ ul{
 }
 .item-float{
     z-index: 1;
-    width: 900px;
+    width: 500px;
 }
 .dropdown {
     position: fixed; /* Fija el elemento en la pantalla */

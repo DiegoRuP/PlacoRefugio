@@ -1,7 +1,32 @@
-<body>
-    <main>
+<div class="dropdown nav-item item-float">
+  <a class="nav-link nav-link dropdown-toggle">
+    <i class="fa-solid fa-universal-access fa-xl"></i>
+  </a>
+  <div class="dropdown-content" [style.fontSize.px]="fontSize">
+    <a class="dropdown-item nav-style" (click)="readContent()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+      Leer texto <i class="fa-solid fa-play fa-lg pl-3"></i>
+     </a>
+     <a class="navbar-item nav-style" (click)="increaseFontSize()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+       Aumentar texto <i class="fa-solid fa-plus fa-lg pl-3"></i>
+     </a>
+     <a class="navbar-item nav-style" (click)="decreaseFontSize()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+       Decrementar texto <i class="fa-solid fa-minus fa-lg pl-3"></i>
+     </a>
+     <a class="navbar-item nav-style" (click)="increasePadding()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+       Aumentar espaciado <i class="fa-solid fa-boxes-stacked fa-lg pl-3"></i>
+     </a>
+     <a class="navbar-item nav-style" (click)="toggleContrast()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+       Cambiar contraste <i class="fa-solid fa-droplet fa-lg pl-3"></i>
+     </a>
+     <a class="navbar-item nav-style" (click)="toggleDyslexicFont()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+       Tipografia para dislexicos <i class="fa-solid fa-font fa-lg pl-3"></i>
+     </a>
+  </div>
+</div>
+<body id="content">
+    <main [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : ''">
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
+          <div class="carousel-inner" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'">
             <div class="carousel-item active">
               <img src="../../assets/img/perroygatoInicio.jpg" class="d-block w-100 img-fluid" alt="...">
             </div>
@@ -15,49 +40,49 @@
         </div>      
         <br><br>  
         <!-- Informacion -->
-        <section id="informacion">
-          <div class="infNosotros">
-            <h2>¡Información que necesitas saber!</h2>
+        <section id="informacion" [class]="isContrastMode ? 'dark-contrast' : ''">
+          <div class="infNosotros" [class]="isContrastMode ? 'dark-contrast' : ''" [style.padding.px]="paddingSize">
+            <h2 [class]="isContrastMode ? 'dark-contrast' : ''" [style.padding.px]="paddingSize" [style.fontSize.px]="fontSize" [class.dyslexic-font]="isDyslexicFont">¡Información que necesitas saber!</h2>
     
-            <p>En PlacoRefugio, nuestra meta es facilitar que animales abandonados y maltratados encuentren hogares amorosos. 
+            <p [class]="isContrastMode ? 'dark-contrast' : ''" [style.padding.px]="paddingSize">En PlacoRefugio, nuestra meta es facilitar que animales abandonados y maltratados encuentren hogares amorosos. 
               Creemos que todas las mascotas merecen un lugar donde puedan ser queridas y ser parte de una familia. 
               Nos esforzamos por unir a estos animales con personas comprometidas que estén dispuestas a darles el amor y los 
               cuidados necesarios para una vida plena.</p>
       
-            <p>En PlacoRefugio, no solo facilitamos adopciones, también educamos sobre la responsabilidad de tener mascotas, 
+            <p [class]="isContrastMode ? 'dark-contrast' : ''" [style.padding.px]="paddingSize">En PlacoRefugio, no solo facilitamos adopciones, también educamos sobre la responsabilidad de tener mascotas, 
               ofreciendo consejos de cuidado y promoviendo la esterilización y vacunación. Creemos en construir relaciones sólidas 
               entre mascotas y sus familias adoptivas para un futuro lleno de amor y felicidad.</p>
           </div>
           <hr>
-          <div class="PasosAdoptar">
-            <h2>¿¡Como Adoptar!?</h2>
+          <div class="PasosAdoptar" [style.padding.px]="paddingSize">
+            <h2 [class]="isContrastMode ? 'dark-contrast' : ''" [style.fontSize.px]="fontSize" [class.dyslexic-font]="isDyslexicFont">¿¡Como Adoptar!?</h2>
     
-            <div class="Como-Adoptar">
+            <div class="Como-Adoptar" [class]="isContrastMode ? 'dark-contrast' : ''" [style.padding.px]="paddingSize">
               <div class="Adoptar-ImgP">
                 <img src="../../assets/img/AdoptarPerro1.jpg" alt="Imagen 1">
-                <h3>Elige tu mascota</h3>
-                <p>Visita algun refugio o algun centro de animales. 
+                <h3 [class]="isContrastMode ? 'dark-contrast' : ''">Elige tu mascota</h3>
+                <p [class]="isContrastMode ? 'dark-contrast' : ''">Visita algun refugio o algun centro de animales. 
                   Investiga las razas y tamaños para encontrar la mascota que mejor se adapte a tu estilo de vida. 
                   Conoce a los animales disponibles y decide que mascota te acompañara en tu vida.</p>
               </div>
-              <div class="Adoptar-ImgP">
+              <div class="Adoptar-ImgP" [class]="isContrastMode ? 'dark-contrast' : ''" [style.padding.px]="paddingSize">
                 <img src="../../assets/img/Adopcion2.jpg" alt="Imagen 2">
-                <h3>Proceso de adopción</h3>
-                <p>Llena  el formulario de solicitud y realiza el pago de una tarifa que cubre los 
+                <h3 [class]="isContrastMode ? 'dark-contrast' : ''">Proceso de adopción</h3>
+                <p [class]="isContrastMode ? 'dark-contrast' : ''">Llena  el formulario de solicitud y realiza el pago de una tarifa que cubre los 
                   costos de esterilización, vacunas y microchip. Asiste a una entrevista donde demostrarás tu compromiso y 
                   capacidad para brindar un hogar adecuado a tu nueva mascota.</p>
               </div>
-              <div class="Adoptar-ImgP">
+              <div class="Adoptar-ImgP" [class]="isContrastMode ? 'dark-contrast' : ''" [style.padding.px]="paddingSize">
                 <img src="../../assets/img/PerroCasa3.png" alt="Imagen 3">
-                <h3>Llevalo a su hogar</h3>
-                <p>Adquiere los suministros básicos como comida, platos, cama y juguetes para recibir a tu nueva mascota.
+                <h3 [class]="isContrastMode ? 'dark-contrast' : ''">Llevalo a su hogar</h3>
+                <p [class]="isContrastMode ? 'dark-contrast' : ''">Adquiere los suministros básicos como comida, platos, cama y juguetes para recibir a tu nueva mascota.
                   Asegura tu casa para evitar escapes o accidentes y crea un espacio cómodo y seguro donde 
                   tu mascota pueda sentirse feliz y protegida.</p>
               </div>
-              <div class="Adoptar-ImgP">
+              <div class="Adoptar-ImgP" [class]="isContrastMode ? 'dark-contrast' : ''" [style.padding.px]="paddingSize">
                 <img src="../../assets/img/PerroFeliz4.jpg" alt="Imagen 4">
-                <h3>Bienvenido a casa</h3>
-                <p>Bríndale atención, ejercicio y entrenamientos adecuados para construir una fuerte conexión y una vida 
+                <h3 [class]="isContrastMode ? 'dark-contrast' : ''">Bienvenido a casa</h3>
+                <p [class]="isContrastMode ? 'dark-contrast' : ''">Bríndale atención, ejercicio y entrenamientos adecuados para construir una fuerte conexión y una vida 
                   llena de momentos felices. Disfruta de la compañía 
                   incondicional y el cariño de tu nueva mascota</p>
               </div>
@@ -67,7 +92,7 @@
 
           <!-- Video de pipe proteccion -->
 
-          <h2>Lo importante que es adoptar</h2>
+          <h2 [class]="isContrastMode ? 'dark-contrast' : ''" [style.fontSize.px]="fontSize" [class.dyslexic-font]="isDyslexicFont">Lo importante que es adoptar</h2>
 
           <div class="videoAdopcion">
             <div class="videoWrapper">
@@ -83,9 +108,9 @@
           </div>
 
           <hr>
-          <h2>Elige a tu nuevo mejor amigo</h2>
+          <h2 [class]="isContrastMode ? 'dark-contrast' : ''" [style.fontSize.px]="fontSize" [class.dyslexic-font]="isDyslexicFont">Elige a tu nuevo mejor amigo</h2>
           <!-- Imagenes de Gato Y Perro -->
-          <div class="ImagenesGatoPerro">
+          <div class="ImagenesGatoPerro" [style.padding.px]="paddingSize">
             <img src="../../assets/img/CaraPerro.png" alt="">
             <img src="../../assets/img/CaraGato.png" alt="">
           </div>
