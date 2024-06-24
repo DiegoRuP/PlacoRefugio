@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FormControl,FormGroup,ReactiveFormsModule,Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 
 
@@ -51,12 +52,11 @@ export class CorreoComponent {
     else
       this.resultado = "Hay datos invalidos en el formulario";
     const cuerpoCorreo = `        
-        Hola ${this.nombre} ${this.apellido},
-        Gracias por tu mensaje:\n
+        El usuario ${this.nombre} ${this.apellido},
+        Se contactó con nosotros:\n
         "- ${this.mensaje}"\n
-        Nos pondremos en contacto contigo lo más pronto posible.
-        Saludos cordiales,
-        Tu equipo PlacoRefugio`;
+        Puedes contactarlo al correo: ${this.email} o al teléfono: ${this.telefono}\n
+        PlacoRefugio`;
 
     const correo = {
       to: this.email,
@@ -67,9 +67,18 @@ export class CorreoComponent {
     this.http.post('http://localhost:3000/correo', correo)
       .subscribe(
         response => {
-          console.log('Email enviado', response);
+          Swal.fire({
+            icon: 'success',
+            title: 'Correo enviado',
+            text: 'Nos comunicaremos contigo lo más pronto posible'
+          });
         },
         error => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error al enviar el correo',
+            text: 'Completa todos los campos correctamente y vuelve a intentarlo'
+          });
           console.error('Error al enviar el correo', error);
         }
       );

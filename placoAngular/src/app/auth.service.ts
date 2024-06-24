@@ -15,7 +15,7 @@ export class AuthService {
   user$ = user(this.firebaseAuth);
   currentUserSig = signal<UserInterface | null | undefined>(undefined);
   private recaptchaVerifier?:RecaptchaVerifier;
-  private userCrenedtial?:UserCredential;
+  private userCredential?:UserCredential;
 
   //registrar usuario
   registrar(correo: string, usuario: string, contra: string, telefono: string): Observable<void> {
@@ -115,10 +115,13 @@ export class AuthService {
     }
 
     //si las credenciales son correctas, iniciar sesión
-    let phoneCrenedtial=PhoneAuthProvider.credential(credentials,code);
+    let phoneCredential=PhoneAuthProvider.credential(credentials,code);
     console.log("Codigo: "+code+" credentials: "+credentials)
-    signInWithCredential(this.firebaseAuth,phoneCrenedtial).then((userCredential)=>{
-    this.userCrenedtial=userCredential;
+    signInWithCredential(this.firebaseAuth,phoneCredential).then((userCredential)=>{
+    this.userCredential=userCredential;
+    const uid = userCredential.user.uid; 
+    console.log("UID: "+uid);
+
     Swal.fire({
       title: 'Exito',
       text: 'Bienvenido',

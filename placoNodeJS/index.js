@@ -63,7 +63,7 @@ app.post('/correo', (req, res) => {
     }
 
     let mail = {
-        to: to,
+        to: 'animalesrefugio61@gmail.com',
         subject: subject,
         text: text,
     };
