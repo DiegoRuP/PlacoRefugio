@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { LogintelComponent } from './logintel/logintel.component';
 import { MisCitasComponent } from './mis-citas/mis-citas.component';
+import { PreguntasComponent } from './preguntas/preguntas.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -27,4 +28,5 @@ export const routes: Routes = [
     {path: 'registro', component: RegistroComponent},
     {path: 'login-tel', component: LogintelComponent},
     {path: 'misCitas', component: MisCitasComponent},
+    {path: 'preguntas', component: PreguntasComponent},
 ];
