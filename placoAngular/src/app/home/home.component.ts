@@ -20,6 +20,7 @@ export class HomeComponent {
   array:any[]=[];
   ruta:string="";
   nombre:string="";
+  showModal: boolean = true;
 
   constructor(private router: Router, private apiBDService:ObtencionNodeJSService) {}
 
@@ -46,6 +47,10 @@ export class HomeComponent {
   getRandomMascota():any{
     const randomIndex = Math.floor(Math.random()*this.array.length);
     return this.array[randomIndex];
+  }
+
+  closeModal() {
+    this.showModal = false;
   }
   
   redirectToAdopta() {

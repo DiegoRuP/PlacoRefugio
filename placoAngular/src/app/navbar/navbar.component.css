@@ -13,6 +13,10 @@ li{
     border-bottom: solid black 2px; 
 }
 
+.nav-link{
+    cursor: pointer;
+}
+
 i{
     margin-right: 5px;
 }

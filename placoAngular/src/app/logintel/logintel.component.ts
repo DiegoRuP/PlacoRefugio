@@ -26,7 +26,7 @@ export class LogintelComponent {
     //const rawForm = this.form.getRawValue();
     /*this.authService.login(rawForm.correo, rawForm.contra)
       .subscribe(() => this.router.navigateByUrl('/'));*/
-    this.authService.sendSMS(this.phone,captcha,(validado)=>{
+    this.authService.sendSMS('+52'+this.phone,captcha,(validado)=>{
       this.validado=validado;
     })
   }
@@ -35,8 +35,21 @@ export class LogintelComponent {
     console.log(this.codigo)
     this.authService.phoneConfirmationCode(this.codigo,(validado)=>{
       if(validado){
-        console.log("Codigo validado");
-        this.router.navigateByUrl('/');
+        Swal.fire({
+          title: 'Bienvenido',
+          text: 'Inicio de sesión exitoso',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          this.router.navigateByUrl('/');
+        });
+      }else {
+        Swal.fire({
+          title: 'Error',
+          text: 'Código SMS incorrecto',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
       }
     });
   }

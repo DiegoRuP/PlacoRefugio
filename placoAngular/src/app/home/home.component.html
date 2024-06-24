@@ -1,17 +1,22 @@
 <body>
-  <!-- QR QR -->
-    <div class="container">
-      <div class="row">
-          <div class="col text-center">
-              <div class="qr">
-                <h1>{{nombre}}</h1>
-                  <img src="{{ruta}}" alt="{{nombre}}">
-                  <qrcode [qrdata]="qr" [width]="400" [errorCorrectionLevel]="'Q'"></qrcode>
-              </div>
-              <button class="boton" (click)="generarQRMascota()">Generar QR Aleatorio</button>   
-          </div>
+
+  <div class="modal" id="myModal" *ngIf="showModal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>¿Quieres conocer a tu siguiente amigo?</h2>
+      <hr>
+      <button (click)="generarQRMascota()">Sorprendeme</button>
+      <h2>{{nombre}}</h2>
+      <div *ngIf="qr" class="horizontal-layout">
+        <div class="imagenModal">
+          <img [src]="ruta" alt="Mascota" width="400px" height="400px" class="mascota-image">
+        </div>
+        <div class="mostrarQR">
+          <qrcode [qrdata]="qr" [width]="400" [errorCorrectionLevel]="'Q'"></qrcode>
+        </div>
       </div>
     </div>
+  </div>
     <!-- QR QR -->
     <main>
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
@@ -108,7 +113,7 @@
             <img src="../../assets/img/CaraGato.png" alt="">
           </div>
           <!-- Boton para adoptar -->                                      <!-- PIPE -->
-          <button class="btnAdoptar"><a (click)="redirectToAdopta()"><h1>{{'¡Adopta Ya!' | uppercase }}</h1></a></button>
+          <button class="btnAdoptar" (click)="redirectToAdopta()" ><h1>{{'¡Adopta Ya!' | uppercase }}</h1></button>
           <hr>
           <app-comentario></app-comentario>
         </section>

@@ -3,6 +3,7 @@ import { Auth, PhoneAuthProvider, RecaptchaVerifier, UserCredential, createUserW
 import { Observable, from } from 'rxjs';
 import { Firestore, doc, setDoc, collection, getDocs, QuerySnapshot, collectionData } from '@angular/fire/firestore';
 import { UserInterface } from './user.interface';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,12 @@ export class AuthService {
 
   logout(): Observable<void>{
     const promise = signOut(this.firebaseAuth);
+    Swal.fire({
+      title: 'Sesión cerrada',
+      text: 'Hasta luego',
+      icon: 'success',
+      confirmButtonText: 'OK'
+    });
     return from(promise);
   }
 
@@ -62,14 +69,29 @@ export class AuthService {
         //enviar código y guardarlo en sessionstorage
         signInWithPhoneNumber(this.firebaseAuth,phone,this.recaptchaVerifier!).then((result)=>{
           sessionStorage.setItem('verificationId',JSON.stringify(result.verificationId));
-          alert("Código enviado")
+            Swal.fire({
+              title: 'Exito',
+              text: 'Mensaje enviado',
+              icon: 'success',
+              confirmButtonText: 'OK'
+            });
           callback(true);
         }).catch((error)=>{
-          alert("Error al mandar el código: "+error.message);
+          Swal.fire({
+            title: 'Error',
+            text: 'Error al mandar el código' + error.message,
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
           callback(false);
         });
       }else{
-        alert("Error al verificar el captcha")
+        Swal.fire({
+          title: 'Error',
+          text: 'Error al verificar el captcha',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
         callback(false);
       }
     });
@@ -97,11 +119,21 @@ export class AuthService {
     console.log("Codigo: "+code+" credentials: "+credentials)
     signInWithCredential(this.firebaseAuth,phoneCrenedtial).then((userCredential)=>{
     this.userCrenedtial=userCredential;
-      alert("Bienvenido");
+    Swal.fire({
+      title: 'Exito',
+      text: 'Bienvenido',
+      icon: 'success',
+      confirmButtonText: 'OK'
+    });
       callback(true);
       return;
     }).catch((error)=>{
-      alert("Error al verificar el codigo: "+error.message);
+      Swal.fire({
+        title: 'Error',
+        text: 'Error al verificar el código' + error.message,
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
       callback(false);
       return;
     });
