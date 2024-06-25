@@ -3,11 +3,13 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import Swal from 'sweetalert2';
+import { matchPasswordValidator } from '../validators';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,CommonModule],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css'
 })
@@ -22,8 +24,9 @@ export class RegistroComponent {
     usuario: ['', Validators.required],
     correo: ['', Validators.required],
     contra: ['', Validators.required],
+    contra2: ['', Validators.required],
     telefono: ['', [Validators.required, Validators.pattern('^\\+?[1-9]\\d{1,14}$')]],
-  });
+  }, { validators: matchPasswordValidator() });
 
   onSubmit(): void {
     const rawForm = this.form.getRawValue();
@@ -41,7 +44,7 @@ export class RegistroComponent {
       error: (err) => {
         Swal.fire({
           title: 'Error',
-          text: 'Error al registrar',
+          text: 'La contraseña debe ser mayor o igual a 6 digitos.',
           icon: 'error',
           confirmButtonText: 'OK'
         });

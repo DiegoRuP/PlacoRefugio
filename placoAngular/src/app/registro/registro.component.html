@@ -3,30 +3,40 @@
 
     <hr>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div>
-        <input type="text" formControlName="usuario" placeholder="Usuario">
-        <br><br>
-    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div>
+            <input type="text" formControlName="usuario" placeholder="Usuario">
+            <br><br>
+        </div>
 
-    <div>
-        <input type="text" formControlName="correo" placeholder="Correo">
-        <br><br>
-    </div>
+        <div>
+            <input type="text" formControlName="correo" placeholder="Correo">
+            <br><br>
+        </div>
 
-    <div>
-        <input type="password" formControlName="contra" placeholder="Contraseña">
-        <br><br>
-    </div>
+        <div>
+            <input type="password" formControlName="contra" placeholder="Contraseña">
+            <br><br>
+        </div>
 
-    <div>
-        <input type="text" formControlName="telefono" placeholder="Número de teléfono">
-        <br><br>
-    </div>
-    <hr>
+        <div>
+            <input type="password" formControlName="contra2" placeholder="Contraseña">
+            <br>
+        </div>
 
-    <div>
-        <button type="submit" >Registrar</button>
-    </div>
-</form>
+        <div >
+            <p *ngIf="form.errors?.['passwordMismatch']" style="color: rgb(255, 255, 255); margin: 0 auto; font-size: 20px; font-weight: bold; font-stretch: expanded;">Las contraseñas no coinciden</p>
+            <br>
+        </div>
+
+        <div>
+            <input type="text" formControlName="telefono" placeholder="Número de teléfono">
+            <br><br>
+        </div>
+        <hr>
+
+        <div>
+            <button type="submit" >Registrar</button>
+        </div>
+    </form>
 </div>
