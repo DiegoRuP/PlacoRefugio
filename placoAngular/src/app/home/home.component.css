@@ -158,7 +158,8 @@ iframe{
 
 .modal-content h2 {
   margin-top: 20px;
-  font-size: 35px;
+  font-size: 35px !important;
+
 }
 
 .modal hr{

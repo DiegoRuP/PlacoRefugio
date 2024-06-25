@@ -24,7 +24,7 @@
   </div>
 </div>
 <div class="container" id="content">
-    <h1 id="tituloCitas" [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : ''">Mis Citas</h1>
+    <h1 class="tituloPagina" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : ''">Mis Citas</h1>
     <hr>
     <ng-container *ngIf="citas$ | async as citas; else loading">
       <div [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : ''" *ngIf="citas.length === 0">

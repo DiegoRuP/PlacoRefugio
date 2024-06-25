@@ -187,11 +187,11 @@ export class ReporteComponent{
             title: {
               display: true,
               text: 'Gráfica de Razas',
-              color: 'black'
+              color: 'white'
             },
             legend: {
               labels: {
-                color: 'black'  
+                color: 'white'  
               }
             },
             tooltip: {
@@ -204,20 +204,20 @@ export class ReporteComponent{
               title: {
                 display: true,
                 text: 'Raza',
-                color: 'black'
+                color: 'white'
               },
               ticks: {
-                color: 'black'  
+                color: 'white'  
               }
             },
             y: {
               title: {
                 display: true,
                 text: 'Cantidad',
-                color: 'black'
+                color: 'white'
               },
               ticks: {
-                color: 'black' 
+                color: 'white' 
               }
             }
           }
@@ -248,11 +248,11 @@ export class ReporteComponent{
             title: {
               display: true,
               text: 'Gráfica Edades de los Perros',
-              color: 'black'
+              color: 'white'
             },
             legend: {
               labels: {
-                color: 'black' 
+                color: 'white' 
               }
             },
             tooltip: {
@@ -264,21 +264,21 @@ export class ReporteComponent{
             x: {
               title: {
                 display: true,
-                text: 'Edad',
-                color: 'black'
+                text: 'Años',
+                color: 'white'
               },
               ticks: {
-                color: 'black' 
+                color: 'white' 
               }
             },
             y: {
               title: {
                 display: true,
                 text: 'Cantidad',
-                color: 'black'
+                color: 'white'
               },
               ticks: {
-                color: 'black' 
+                color: 'white' 
               }
             }
           }
@@ -310,11 +310,11 @@ export class ReporteComponent{
             title: {
               display: true,
               text: 'Gráfica de Tiempos de Adopción',
-              color: 'black'
+              color: 'white'
             },
             legend: {
               labels: {
-                color: 'black' 
+                color: 'white' 
               }
             },
             tooltip: {
@@ -326,21 +326,21 @@ export class ReporteComponent{
             x: {
               title: {
                 display: true,
-                text: 'Tiempo de Adopción',
-                color: 'black'
+                text: 'Tiempo de Adopción en meses',
+                color: 'white'
               },
               ticks: {
-                color: 'black' 
+                color: 'white' 
               }
             },
             y: {
               title: {
                 display: true,
                 text: 'Cantidad',
-                color: 'black'
+                color: 'white'
               },
               ticks: {
-                color: 'black' 
+                color: 'white' 
               }
             }
           }

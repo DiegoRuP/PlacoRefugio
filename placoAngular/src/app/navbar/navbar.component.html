@@ -36,7 +36,7 @@
           <li class="nav-item active" style="margin-right: 20px;">
             <a class="nav-link" [routerLink]="['/preguntas']" (click)="closeMenu()"><i class="fa-solid fa-paw fa-lg" style="color: #000000; margin-right: 5px;"></i>Preguntas frecuentes</a>
           </li>
-          <li class="nav-item active" style="margin-right: 20px;">
+          <li class="nav-item active" style="margin-right: 20px;" *ngIf="!esAdmin">
             <a class="nav-link" [routerLink]="['/misCitas']" (click)="closeMenu()"><i class="fa-solid fa-paw fa-lg" style="color: #000000; margin-right: 5px;"></i>Mis Citas</a>
           </li>
         </ng-template>

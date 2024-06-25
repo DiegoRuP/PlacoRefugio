@@ -1,33 +1,57 @@
-/* Estilos para las tablas */
 table {
-    width: 60%;
-    border-collapse: collapse;
-    margin-bottom: 20px; /* Espacio entre las tablas */
-    margin: auto;
-
-  }
-  /* Estilos para las celdas de encabezado */
-  th {
-    background-color: #f2f2f2; /* Color de fondo */
-    color: #333; /* Color del texto */
-    font-weight: bold; /* Negrita */
-    padding: 10px; /* Espaciado interno */
-    text-align: left; /* Alineación del texto */
-    border-bottom: 1px solid #ddd; /* Borde inferior */
-  }
-  
-  /* Estilos para las celdas de datos */
-  td {
-    padding: 10px; /* Espaciado interno */
-    border-bottom: 1px solid #ddd; /* Borde inferior */
-    background-color: white;
-
-  }
-  
-
-h1{
-    text-align: center;
+  width: 80%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  margin: auto;
+  border-radius: 20px; 
+  overflow: hidden; 
+  border: 2px solid #AF8260; 
 }
+
+th {
+  background-color: #DEAC80;
+  color: #674329;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+  border-bottom: 2px solid #AF8260;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #AF8260;
+  background-color: white;
+}
+
+tbody tr {
+  border-bottom: 1px solid #DEAC80;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #F7E4D0;
+}
+
+tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 20px;
+}
+tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 20px;
+}
+  
+
+  h1{
+    text-align: center;
+    font-size: 35px;
+    font-weight: 700;
+    
+  }
+
+  .hrTitulo{
+    border: dashed 2px black;
+    color: #AF8260;
+    margin: 40px;
+
+  }
 
 .containerReporte{
   width: 90%;

@@ -24,7 +24,8 @@
     </div>
 </div>
 <div class="containerAdopta" id="content" [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'">
-    <h1 class="tituloAdopta h1" [style.fontSize.px]="fontSize" [class.dyslexic-font]="isDyslexicFont">Adopta a tu nuevo amigo</h1>
+  <br>
+  <h1 class="tituloPagina" [class.dyslexic-font]="isDyslexicFont">Adopta a tu nuevo amigo</h1>
     <hr>
     <div class="card-group row row-cols-1 row-cols-lg-3 g-4">
         @for (m of adopciones; track m; let i = $index){

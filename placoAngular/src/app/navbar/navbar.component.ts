@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   authService = inject(AuthService);
   constructor(private router: Router) { }
   esAdmin: boolean = false;
+  noEs: boolean = true;
   
 
   buscarMascota(raza: string) {

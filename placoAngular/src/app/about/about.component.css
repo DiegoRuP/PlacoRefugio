@@ -121,3 +121,17 @@ ul{
   .dropdown-content a:hover {
     cursor: pointer;
   }
+
+  .tituloPagina{
+    text-align: center;
+    font-size: 35px;
+    font-weight: 700;
+    
+  }
+
+  .hrTitulo{
+    border: dashed 2px black;
+    color: #AF8260;
+    margin: 40px;
+
+  }
