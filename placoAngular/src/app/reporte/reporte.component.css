@@ -1,48 +1,69 @@
-/* Estilos para las tablas */
-table {
-    width: 60%;
-    border-collapse: collapse;
-    margin-bottom: 20px; /* Espacio entre las tablas */
-    margin: auto;
+.containerReporte{
+  width: 90%;
+  margin: auto;
+  border-radius: 15px;
+  background-color: #AF8260 !important;
+  padding: 40px;
+  border: black 2px dashed;
+  box-shadow: 1px 3px 4px black;
+}
 
-  }
-  /* Estilos para las celdas de encabezado */
-  th {
-    background-color: #f2f2f2; /* Color de fondo */
-    color: #333; /* Color del texto */
-    font-weight: bold; /* Negrita */
-    padding: 10px; /* Espaciado interno */
-    text-align: left; /* Alineación del texto */
-    border-bottom: 1px solid #ddd; /* Borde inferior */
-  }
-  
-  /* Estilos para las celdas de datos */
-  td {
-    padding: 10px; /* Espaciado interno */
-    border-bottom: 1px solid #ddd; /* Borde inferior */
-    background-color: white;
+hr{
+  border: dashed 2px black;
+  margin: 40px;
+  color: #AF8260;
+}
 
-  }
-  
+#titulo{
+  margin-bottom: 1rem;
+  text-align:center;
+  font-family: Impact;
+}
+
+.table {
+  margin: 0 auto;
+  width: 60%;
+  border-collapse: collapse;
+  background-color: #b99d81;
+  border-radius: 20px;
+}
+
+.arIz{
+  border-radius: 20px 0px 0px 0px;
+}
+
+.arDe{
+  border-radius: 0px 20px 0px 0px;
+}
+
+td{
+  border-radius: 20px;
+}
+
+th{
+  text-align: center;
+}
+
+.centrar{
+  text-align: center;
+}
+
+th, td{
+  background-color: #b99d81;
+  padding: 20px;
+  border-bottom: none;
+}
 
 h1{
     text-align: center;
 }
 
-.containerReporte{
-  width: 90%;
-    margin: auto;
-    border-radius: 15px;
-    background-color: #AF8260;
-    padding: 40px;
-    border: black 2px dashed;
-
-    box-shadow: 1px 3px 4px black;
+tbody tr:nth-child(n) {
+  border-top: 2px solid black;
 }
-  
-hr{
-  border: dashed 2px black;
-  margin: 40px;
-  color: #AF8260;
 
-}
+/* .table tbody tr:hover {
+  cursor: pointer;
+  transform: scale(1.01);
+  transition: all 0.2s ease-in-out;
+} */

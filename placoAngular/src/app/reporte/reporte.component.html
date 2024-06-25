@@ -1,43 +1,43 @@
 <div class="containerReporte">
-  <h1>Reportes</h1>
+  <h1 id="titulo">Reportes</h1>
   <hr>
-  <table>
+  <table class="table">
     <thead>
       <tr>
-        <th>Nombre</th>
+        <th class="arIz">Nombre</th>
         <th>Correo</th>
         <th>Teléfono</th>
         <th>Hora</th>
         <th>Fecha</th>
-        <th>Mascota</th>
+        <th class="arDe">Mascota</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let cita of citas">
-        <td>{{ cita.nombre }}</td>
+        <td class="abIz">{{ cita.nombre }}</td>
         <td>{{ cita.correo }}</td>
         <td>{{ cita.telefono }}</td>
         <td>{{ cita.hora }}:00 hrs</td>
         <td>{{ cita.fecha }}</td>
-        <td>{{ cita.nombreMascota }}</td>
+        <td class="abDe">{{ cita.nombreMascota }}</td>
       </tr>
     </tbody>
   </table>
   <br><br>
 
-  <h1>Cantidad por Raza</h1>
+  <h1 id="titulo">Cantidad por Raza</h1>
   <hr>
-  <table>
+  <table class="table">
     <thead>
       <tr>
-        <th>Raza</th>
-        <th>Cantidad</th>
+        <th class="arIz">Raza</th>
+        <th class="arDe">Cantidad</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let raza of getRazaKeys()">
-        <td>{{ raza }}</td>
-        <td>{{ razaCounts[raza] }}</td>
+        <td class="abIz">{{ raza }}</td>
+        <td class="centrar abDe">{{ razaCounts[raza] }}</td>
       </tr>
     </tbody>
   </table>
@@ -45,19 +45,19 @@
   <canvas id="graficaRaza"></canvas>
   <br><br>
 
-  <h1>Edad de los Perros</h1>
+  <h1 id="titulo">Edad de los Perros</h1>
   <hr>
-  <table>
+  <table class="table">
     <thead>
       <tr>
-        <th>Edad</th>
-        <th>Cantidad</th>
+        <th class="arIz">Edad</th>
+        <th class="arDe">Cantidad</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let edad of getEdadKeys()">
-        <td>{{ edad }} años</td>
-        <td>{{ edadCounts[edad] }}</td>
+        <td class="abIz">{{ edad }} años</td>
+        <td class="centrar abDe">{{ edadCounts[edad] }}</td>
       </tr>
     </tbody>
   </table>
@@ -65,19 +65,19 @@
   <canvas id="graficaEdad"></canvas>
   <br><br>
 
-  <h1>Tiempo en Adopción</h1>
+  <h1 id="titulo">Tiempo en Adopción</h1>
   <hr>
-  <table>
+  <table class="table">
     <thead>
       <tr>
-        <th>Tiempo</th>
-        <th>Cantidad</th>
+        <th class="arIz">Tiempo</th>
+        <th class="arDe">Cantidad</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let tiempo of getTiempoKeys()">
-        <td>{{ tiempo }} meses</td>
-        <td>{{ tiempoCounts[tiempo] }}</td>
+        <td class="abIz">{{ tiempo }} meses</td>
+        <td class="centrar abDe">{{ tiempoCounts[tiempo] }}</td>
       </tr>
     </tbody>
   </table>
