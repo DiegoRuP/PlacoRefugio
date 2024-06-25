@@ -1,30 +1,55 @@
-<div class="container">
-    <h1 id="tituloCitas">Mis Citas</h1>
+<div class="dropdown nav-item item-float">
+  <a class="nav-link nav-link dropdown-toggle">
+    <i class="fa-solid fa-universal-access fa-xl"></i>
+  </a>
+  <div class="dropdown-content" [style.fontSize.px]="fontSize">
+    <a class="dropdown-item nav-style" (click)="readContent()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+      Leer texto <i class="fa-solid fa-play fa-lg pl-3"></i>
+     </a>
+     <a class="navbar-item nav-style" (click)="increaseFontSize()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+       Aumentar texto <i class="fa-solid fa-plus fa-lg pl-3"></i>
+     </a>
+     <a class="navbar-item nav-style" (click)="decreaseFontSize()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+       Decrementar texto <i class="fa-solid fa-minus fa-lg pl-3"></i>
+     </a>
+     <a class="navbar-item nav-style" (click)="increasePadding()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+       Aumentar espaciado <i class="fa-solid fa-boxes-stacked fa-lg pl-3"></i>
+     </a>
+     <a class="navbar-item nav-style" (click)="toggleContrast()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+       Cambiar contraste <i class="fa-solid fa-droplet fa-lg pl-3"></i>
+     </a>
+     <a class="navbar-item nav-style" (click)="toggleDyslexicFont()" [class]="isContrastMode ? 'dark-contrast' : 'light-contrast'" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont">
+       Tipografia para dislexicos <i class="fa-solid fa-font fa-lg pl-3"></i>
+     </a>
+  </div>
+</div>
+<div class="container" id="content">
+    <h1 id="tituloCitas" [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : ''">Mis Citas</h1>
     <hr>
     <ng-container *ngIf="citas$ | async as citas; else loading">
-      <div *ngIf="citas.length === 0">
-        <p>No tienes citas agendadas.</p>
+      <div [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : ''" *ngIf="citas.length === 0">
+        <p [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : ''" >No tienes citas agendadas.</p>
       </div>
-      <div *ngIf="citas.length > 0">
-        <table class="table table-hover">
+      <div [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : ''" *ngIf="citas.length > 0">
+        <table class="table table-hover" [style.fontSize.px]="fontSize" [style.padding.px]="paddingSize" [class.dyslexic-font]="isDyslexicFont" [class]="isContrastMode ? 'dark-contrast' : ''">
             <tr>
-              <th scope="col">Nombre Mascota</th>
-              <th scope="col">Fecha</th>
-              <th scope="col">Hora</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Correo</th>
-              <th scope="col">Teléfono</th>
-              <th scope="col">Acciones</th>
+              <th scope="col" [class]="isContrastMode ? 'dark-contrast' : ''">Nombre Mascota</th>
+              <th scope="col" [class]="isContrastMode ? 'dark-contrast' : ''">Fecha</th>
+              <th scope="col" [class]="isContrastMode ? 'dark-contrast' : ''">Hora</th>
+              <th scope="col" [class]="isContrastMode ? 'dark-contrast' : ''">Nombre</th>
+              <th scope="col" [class]="isContrastMode ? 'dark-contrast' : ''">Correo</th>
+              <th scope="col" [class]="isContrastMode ? 'dark-contrast' : ''">Teléfono</th>
+              <th scope="col" [class]="isContrastMode ? 'dark-contrast' : ''">Acciones</th>
             </tr>
             <tr *ngFor="let cita of citas">
-              <td>{{ cita['nombreMascota'] }}</td>
-              <td>{{ cita['fecha'] | date: 'dd/MM/yyyy' }}</td>
-              <td>{{ cita['hora'] }}</td>
-              <td>{{ cita['nombre'] }}</td>
-              <td>{{ cita['correo'] }}</td>
-              <td>{{ cita['telefono'] }}</td>
-              <td>
-                <button class="btn" (click)="cancelarCita(cita)">Cancelar Cita</button>
+              <td [class]="isContrastMode ? 'dark-contrast' : ''">{{ cita['nombreMascota'] }}</td>
+              <td [class]="isContrastMode ? 'dark-contrast' : ''">{{ cita['fecha'] | date: 'dd/MM/yyyy' }}</td>
+              <td [class]="isContrastMode ? 'dark-contrast' : ''">{{ cita['hora'] }}</td>
+              <td [class]="isContrastMode ? 'dark-contrast' : ''">{{ cita['nombre'] }}</td>
+              <td [class]="isContrastMode ? 'dark-contrast' : ''">{{ cita['correo'] }}</td>
+              <td [class]="isContrastMode ? 'dark-contrast' : ''">{{ cita['telefono'] }}</td>
+              <td [class]="isContrastMode ? 'dark-contrast' : ''">
+                <button class="btn" (click)="cancelarCita(cita)" [class]="isContrastMode ? 'dark-contrast' : ''">Cancelar Cita</button>
               </td>
             </tr>
         </table>
