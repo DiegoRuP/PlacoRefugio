@@ -7,6 +7,7 @@ export interface Perritos {
   raza: string;
 }
 
+
 const ELEMENT_DATA: Perritos[] = [
   {nombre: 'Trapecio', edad: 3, raza: 'Pitbull'},
   {nombre: 'Max', edad: 7, raza: 'Labrador'},
